@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-[#0f1119] py-16">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Logo and description */}
           <div className="col-span-1 md:col-span-2">
             <h2 className="text-2xl font-bold gradient-text mb-4">
@@ -141,43 +141,6 @@ const Footer: React.FC = () => {
                 >
                   Download
                 </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h3 className="text-lg font-bold mb-4">Legal</h3>
-            <ul className="space-y-2">
-              <li>
-                <button
-                  type="button"
-                  className="text-gray-400 hover:text-white transition-colors underline-offset-2 focus:outline-none"
-                  aria-label="Privacy Policy (coming soon)"
-                  disabled
-                >
-                  Privacy Policy
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  className="text-gray-400 hover:text-white transition-colors underline-offset-2 focus:outline-none"
-                  aria-label="Terms of Service (coming soon)"
-                  disabled
-                >
-                  Terms of Service
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  className="text-gray-400 hover:text-white transition-colors underline-offset-2 focus:outline-none"
-                  aria-label="Cookie Policy (coming soon)"
-                  disabled
-                >
-                  Cookie Policy
-                </button>
               </li>
             </ul>
           </div>
