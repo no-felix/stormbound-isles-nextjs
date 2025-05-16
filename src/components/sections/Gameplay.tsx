@@ -118,7 +118,7 @@ export default function Gameplay() {
 							<div className="relative rounded-xl overflow-hidden shadow-2xl">
 								{/* TODO: Replace <img> with <Image> from 'next/image' for better optimization */}
 								<Image
-									src="https://placehold.co/600x400?text=Gameplay+Image"
+									src="https://placehold.co/600x400.png?text=Gameplay+Image"
 									alt="Stormbound Isles Gameplay (placeholder)"
 									width={600}
 									height={400}

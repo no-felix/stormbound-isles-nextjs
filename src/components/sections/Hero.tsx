@@ -23,6 +23,8 @@ export default function Hero() {
         amplitude={1.0}
         speed={0.5}
       />
+      {/* Overlay to prevent accidental white flashes from canvas */}
+      <div className="absolute inset-0 pointer-events-none z-10" style={{background: 'transparent'}} />
       {/* Content ohne Parallax-Wrapper */}
       <div className="w-full h-full flex flex-col items-center justify-center relative z-20 text-center min-h-screen">
         <motion.h1
