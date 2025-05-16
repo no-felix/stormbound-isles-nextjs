@@ -1,6 +1,7 @@
 import React from 'react';
 import FadeIn from '../animations/FadeIn';
 import Reveal from '../animations/Reveal';
+import Particles from './Particles';
 
 const features = [
 	{
@@ -50,11 +51,32 @@ const features = [
 export default function Features() {
 	return (
 		<section id="features" className="section-full relative overflow-hidden">
-			<Reveal>
-				<h2 className="text-4xl md:text-5xl font-bold text-white section-headline">
-					Features
-				</h2>
-			</Reveal>
+			{/* Particles animated background */}
+			<div className="absolute inset-0 z-0 pointer-events-none">
+				<Particles
+					particleColors={['#ffffff', '#ffffff']}
+					particleCount={500}
+					particleSpread={10}
+					speed={0.3}
+					particleBaseSize={150}
+					moveParticlesOnHover={false}
+					alphaParticles={false}
+					disableRotation={true}
+				/>
+			</div>
+			
+			{/* Title is placed BEFORE the blur overlay in the DOM */}
+			<div className="relative z-20 mb-12 text-center">
+				<Reveal>
+					<h2 className="text-4xl md:text-5xl font-bold text-white section-headline">
+						Features
+					</h2>
+				</Reveal>
+			</div>
+			
+			{/* Blur overlay */}
+			<div className="absolute inset-0 z-10 pointer-events-none backdrop-blur-sm" style={{background: 'transparent'}} />
+			
 			<div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 z-10 relative">
 				{features.map((feature, idx) => (
 					<FadeIn key={feature.title} delay={0.1 * idx}>
