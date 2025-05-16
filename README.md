@@ -1,36 +1,142 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Stormbound Isles Website
+
+A modern website built with Next.js for the Stormbound Isles Minecraft mod. This site showcases the mod's features, gameplay, and provides download information.
+
+## About the Mod
+
+Stormbound Isles is a Minecraft mod for version 1.21.1 built to support other mods like Create, Iris, Simple Voice Chat, Sodium, and more, featuring:
+
+- Five elemental-themed islands: Volcano, Ice/Snow, Desert, Mushroom, and Crystal/Magic
+- Team-based competition with building, fighting, and survival challenges
+- Random catastrophes that influence gameplay
+- Team passive bonuses depending on island and position
+- A protection phase followed by PvP opportunities
+- Scoring system based on construction, survival, and creativity
+- Built to support other mods like Create, Iris, Simple Voice Chat, Sodium, and more
+
+## Tech Stack
+
+- [Next.js 15](https://nextjs.org/) - React framework
+- [TypeScript](https://www.typescriptlang.org/) - Type-safe JavaScript
+- [Tailwind CSS 4](https://tailwindcss.com/) - Utility-first CSS framework
+- [Framer Motion](https://www.framer.com/motion/) - Animation library
+- [React Intersection Observer](https://github.com/thebuilder/react-intersection-observer) - Scroll detection
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 20.x or higher
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/stormbound-website.git
+cd stormbound-website
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+### Development
+
+Start the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The site will be available at [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Building for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Build the project:
 
-## Learn More
+```bash
+npm run build
+# or
+yarn build
+```
 
-To learn more about Next.js, take a look at the following resources:
+Start the production server:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run start
+# or
+yarn start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
+- `/src/app` - Next.js app router and main layout
+- `/src/components` - React components
+  - `/animations` - Animation components (FadeIn, Reveal, Parallax)
+  - `/layout` - Layout components (Navbar, Footer)
+  - `/sections` - Main page sections (Hero, Features, Islands, etc.)
+- `/public` - Static assets (images, fonts, etc.)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Adding Content
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Images
+
+Add images to the `/public` folder and reference them in your components:
+
+```jsx
+<img src="/your-image.jpg" alt="Description" />
+```
+
+### New Sections
+
+Create new section components in `/src/components/sections` and add them to the main page in `/src/app/page.tsx`.
+
+## Deployment
+
+The site can be deployed to various platforms:
+
+### Vercel (Recommended)
+
+Deploy to Vercel with minimal configuration:
+
+```bash
+npm run build
+vercel
+```
+
+### Other Platforms
+
+Build the static site:
+
+```bash
+npm run build
+```
+
+Deploy the contents of the `.next` folder to your hosting provider.
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgements
+
+- [Next.js](https://nextjs.org/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Geist Font](https://vercel.com/font)
