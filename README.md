@@ -34,8 +34,8 @@ Stormbound Isles is a Minecraft mod for version 1.21.1 built to support other mo
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/stormbound-website.git
-cd stormbound-website
+git clone https://github.com/no-felix/stormbound-isles-nextjs.git
+cd stormbound-isles-nextjs
 ```
 
 2. Install dependencies:
@@ -120,7 +120,7 @@ Build the static site:
 npm run build
 ```
 
-Deploy the contents of the `.next` folder to your hosting provider.
+Deploy the contents of the `out` folder (for static hosting) or `.next` folder (for Node hosting) to your hosting provider.
 
 ## Contributing
 
@@ -132,7 +132,7 @@ Deploy the contents of the `.next` folder to your hosting provider.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgements
 
