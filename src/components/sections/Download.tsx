@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import FadeIn from '../animations/FadeIn';
 import Reveal from '../animations/Reveal';
+import Squares from './Squares';
 
 const installSteps = [
 	{
@@ -42,8 +43,16 @@ export default function Download() {
 			{/* Dark gradient background */}
 			<div className="absolute inset-0 bg-gradient-to-b from-[#1a1e2d] to-[#101424] z-0"></div>
 
-			{/* Grid background across entire section */}
-			<div className="grid-background"></div>
+			{/* Squares animated background */}
+			<div className="absolute inset-0 z-0 pointer-events-none">
+				<Squares
+					speed={0.08}
+					squareSize={40}
+					direction="down"
+					borderColor="#3b4252"
+					hoverFillColor="#222"
+				/>
+			</div>
 
 			<div className="container mx-auto px-4 relative z-10 h-full flex flex-col justify-center py-16">
 				<div className="text-center mb-16">
