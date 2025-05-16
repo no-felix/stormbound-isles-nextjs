@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import FadeIn from '../animations/FadeIn';
 import Reveal from '../animations/Reveal';
+import Image from 'next/image';
 
 const gameplayFeatures = [
 	{
@@ -116,10 +117,13 @@ export default function Gameplay() {
 						<Reveal>
 							<div className="relative rounded-xl overflow-hidden shadow-2xl">
 								{/* TODO: Replace <img> with <Image> from 'next/image' for better optimization */}
-								<img
+								<Image
 									src="https://placehold.co/600x400?text=Gameplay+Image"
 									alt="Stormbound Isles Gameplay (placeholder)"
+									width={600}
+									height={400}
 									className="w-full h-auto"
+									priority
 								/>
 								{/* Original: /gameplay.jpg */}
 								<div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>

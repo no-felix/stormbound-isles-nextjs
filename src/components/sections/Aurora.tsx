@@ -141,41 +141,26 @@ export default function Aurora(props: AuroraProps) {
     gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
     gl.canvas.style.backgroundColor = "transparent";
 
-    let program: Program | undefined;
-
-    function resize() {
-      if (!ctn) return;
-      const width = ctn.offsetWidth;
-      const height = ctn.offsetHeight;
-      renderer.setSize(width, height);
-      if (program) {
-        program.uniforms.uResolution.value = [width, height];
-      }
-    }
-    window.addEventListener("resize", resize);
-
-    const geometry = new Triangle(gl);
-    if (geometry.attributes.uv) {
-      // TypeScript may require a type assertion here.
-      delete (geometry.attributes as any).uv;
-    }
-
-    const colorStopsArray = colorStops.map((hex) => {
-      const c = new Color(hex);
-      return [c.r, c.g, c.b];
-    });
-
-    program = new Program(gl, {
+    const program = new Program(gl, {
       vertex: VERT,
       fragment: FRAG,
       uniforms: {
         uTime: { value: 0 },
         uAmplitude: { value: amplitude },
-        uColorStops: { value: colorStopsArray },
+        uColorStops: { value: colorStops.map((hex) => {
+          const c = new Color(hex);
+          return [c.r, c.g, c.b];
+        }) },
         uResolution: { value: [ctn.offsetWidth, ctn.offsetHeight] },
         uBlend: { value: blend },
       },
     });
+
+    const geometry = new Triangle(gl);
+    if (geometry.attributes.uv) {
+      // TypeScript may require a type assertion here.
+      delete (geometry.attributes as Record<string, unknown>).uv;
+    }
 
     const mesh = new Mesh(gl, { geometry, program });
     ctn.appendChild(gl.canvas);
@@ -198,6 +183,14 @@ export default function Aurora(props: AuroraProps) {
     };
     animateId = requestAnimationFrame(update);
 
+    const resize = () => {
+      if (!ctn) return;
+      const width = ctn.offsetWidth;
+      const height = ctn.offsetHeight;
+      renderer.setSize(width, height);
+      program.uniforms.uResolution.value = [width, height];
+    }
+    window.addEventListener("resize", resize);
     resize();
 
     return () => {
@@ -208,7 +201,7 @@ export default function Aurora(props: AuroraProps) {
       }
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
-  }, [amplitude]);
+  }, [amplitude, blend, colorStops]);
 
   return <div ref={ctnDom} className="w-full h-full absolute inset-0 z-0" />;
 }
