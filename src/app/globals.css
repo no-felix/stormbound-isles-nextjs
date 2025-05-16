@@ -1,15 +1,177 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #181c2b;
+  --foreground: #ededed;
+  --isle-fire: #ff5a36;
+  --isle-ice: #5ad1ff;
+  --isle-desert: #ffe156;
+  --isle-mushroom: #b36cff;
+  --isle-crystal: #5affc6;
+  --glass-bg: rgba(24,28,43,0.7);
+  --glass-border: rgba(255,255,255,0.14);
+  --glass-blur: 24px;
+  --glass-radius: 1.5rem;
+  --glass-shadow: 0 2px 8px 0 rgba(90,209,255,0.10);
+  --accent-gradient: linear-gradient(90deg, #ff5a36 0%, #ffe156 25%, #5ad1ff 50%, #b36cff 75%, #5affc6 100%);
+  --navbar-height: 80px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html, body {
+  scroll-behavior: smooth;
+}
+
+/* Global styles */
+body {
+  min-height: 100vh;
+  background: linear-gradient(140deg, #181c2b 0%, #232946 70%, #1d233a 100%);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans, Arial, Helvetica, sans-serif);
+  overflow-x: hidden;
+}
+
+/* Navbar styles */
+nav {
+  height: var(--navbar-height);
+}
+
+/* Full viewport section */
+.section-full {
+  min-height: calc(100vh - var(--navbar-height));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  scroll-margin-top: var(--navbar-height); /* This ensures proper scroll positioning with fixed navbar */
+}
+
+/* Section spacing control - eliminates gaps */
+section {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  scroll-margin-top: var(--navbar-height); /* This ensures proper scroll positioning with fixed navbar */
+}
+
+/* Styled section dividers */
+.section-divider {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 150px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.section-divider-top {
+  top: -1px;
+  transform: rotateX(180deg);
+}
+
+.section-divider-bottom {
+  bottom: -1px;
+}
+
+/* Consistent headline underlines */
+.section-headline {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.section-headline::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 3px;
+  background: var(--accent-gradient);
+  border-radius: 2px;
+}
+
+/* Enhanced glassy styles */
+.glass {
+  background: var(--glass-bg);
+  border: 1.5px solid var(--glass-border);
+  border-radius: var(--glass-radius);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+  box-shadow: var(--glass-shadow);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card-glass {
+  background: var(--glass-bg);
+  border-radius: var(--glass-radius);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur));
+  transition: all 0.3s ease;
+}
+
+.card-glass:hover {
+  box-shadow: 0 10px 25px rgba(90, 209, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.text-glow {
+  text-shadow: 0 0 4px rgba(90, 209, 255, 0.2);
+  transition: text-shadow 0.15s ease;
+}
+
+.btn-glow {
+  transition: box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+  box-shadow: 0 0 4px rgba(90, 255, 198, 0.1);
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 12px rgba(179, 108, 255, 0.2);
+}
+
+.gradient-text {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtle-mask {
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0));
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0));
+}
+
+/* Decorative icon */
+.deco-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+/* Grid background */
+.grid-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +181,11 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+::-webkit-scrollbar {
+  width: 8px;
+  background: #232946;
+}
+::-webkit-scrollbar-thumb {
+  background: #5ad1ff55;
+  border-radius: 8px;
 }
