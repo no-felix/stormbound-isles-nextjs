@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import HeroParticlesBackground from './HeroParticlesBackground';
+import Aurora from './Aurora';
 
 export default function Hero() {
   const [showScroll, setShowScroll] = useState(true);
@@ -16,8 +16,13 @@ export default function Hero() {
 
   return (
     <section id="hero" className="section-full min-h-screen flex flex-col justify-center items-center overflow-hidden relative">
-      {/* Animated/interaktive Particles Background */}
-      <HeroParticlesBackground />
+      {/* Neue Aurora-Animation als Hintergrund */}
+      <Aurora
+        colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
+        blend={0.5}
+        amplitude={1.0}
+        speed={0.5}
+      />
       {/* Content ohne Parallax-Wrapper */}
       <div className="w-full h-full flex flex-col items-center justify-center relative z-20 text-center min-h-screen">
         <motion.h1
