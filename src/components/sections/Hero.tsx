@@ -55,7 +55,7 @@ export default function Hero() {
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.97 }}
             >
-              Download Now
+              Enter the Isles
             </motion.button>
           </Link>
           <Link href="#features">
@@ -64,7 +64,7 @@ export default function Hero() {
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.97 }}
             >
-              Learn More
+              Discover More
             </motion.button>
           </Link>
         </motion.div>
