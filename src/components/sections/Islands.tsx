@@ -6,46 +6,46 @@ const islands = [
 	{
 		name: 'Volcano Island',
 		description:
-			'A volcanic land of lava rivers, obsidian, and natural forges. Team bonus: Fire resistance.',
+			'Rivers of fire and ancient stone. Endure the heat, harness the forge.',
 		color: 'from-orange-500 via-red-600 to-yellow-400',
 		glow: 'rgba(255, 90, 54, 0.2)',
-		imagePath: 'https://placehold.co/320x384?text=Volcano+Island', // originally: /fire-island.jpg
+		imagePath: 'https://placehold.co/320x384?text=Volcano+Island',
 		icon: '🌋',
 	},
 	{
-		name: 'Ice/Snow Island',
+		name: 'Ice Island',
 		description:
-			'Frozen glaciers, icy caves, and hidden treasures. Team bonus: Slower hunger and freeze immunity.',
+			'Silent glaciers and hidden depths. Outlast the cold, seek what’s lost.',
 		color: 'from-blue-300 via-blue-500 to-cyan-400',
 		glow: 'rgba(90, 209, 255, 0.2)',
-		imagePath: 'https://placehold.co/320x384?text=Ice+Island', // originally: /ice-island.jpg
+		imagePath: 'https://placehold.co/320x384?text=Ice+Island',
 		icon: '❄️',
 	},
 	{
 		name: 'Desert Island',
 		description:
-			'Endless dunes, rare oases, and ancient ruins. Team bonus: Water efficiency and heat resistance.',
+			'Shifting sands and forgotten ruins. Survive the sun, uncover the past.',
 		color: 'from-yellow-400 via-amber-500 to-orange-300',
 		glow: 'rgba(255, 225, 86, 0.2)',
-		imagePath: 'https://placehold.co/320x384?text=Desert+Island', // originally: /desert-island.jpg
+		imagePath: 'https://placehold.co/320x384?text=Desert+Island',
 		icon: '🏜️',
 	},
 	{
 		name: 'Mushroom Island',
 		description:
-			'Giant mushrooms, mystical plants, and secret caves. Team bonus: Regeneration and unique foods.',
+			'Enchanted groves and secret life. Embrace the wild, find the cure.',
 		color: 'from-purple-400 via-pink-400 to-fuchsia-400',
 		glow: 'rgba(179, 108, 255, 0.2)',
-		imagePath: 'https://placehold.co/320x384?text=Mushroom+Island', // originally: /mushroom-island.jpg
+		imagePath: 'https://placehold.co/320x384?text=Mushroom+Island',
 		icon: '🍄',
 	},
 	{
-		name: 'Crystal/Magic Island',
+		name: 'Crystal Island',
 		description:
-			'Glowing crystals, magical energies, and rare artifacts. Team bonus: Magic buffs and faster XP.',
+			'Luminous caves and arcane power. Master the unknown, ascend.',
 		color: 'from-indigo-400 via-cyan-400 to-teal-300',
 		glow: 'rgba(90, 255, 198, 0.2)',
-		imagePath: 'https://placehold.co/320x384?text=Crystal+Island', // originally: /crystal-island.jpg
+		imagePath: 'https://placehold.co/320x384?text=Crystal+Island',
 		icon: '💎',
 	},
 ];
@@ -119,13 +119,12 @@ export default function Islands() {
 				<div className="text-center mb-16">
 					<FadeIn>
 						<h2 className="text-4xl md:text-5xl font-bold text-white section-headline">
-							The Five Themed Islands
+							The Isles Await
 						</h2>
 					</FadeIn>
 					<FadeIn delay={0.2}>
 						<p className="text-xl text-gray-200 max-w-3xl mx-auto">
-							Explore five unique islands, each with their own elemental
-							theme, challenges, and resources.
+							Five lands, five mysteries. Which will you claim?
 						</p>
 					</FadeIn>
 				</div>
@@ -185,7 +184,11 @@ function IslandCard({ island, index }: { island: { name: string; description: st
 					whileHover={{ scale: 1.08 }}
 					whileTap={{ scale: 0.96 }}
 				>
-					Explore Island
+					{index === 0 && 'Embrace the Flame'}
+					{index === 1 && 'Brave the Frost'}
+					{index === 2 && 'Cross the Sands'}
+					{index === 3 && 'Enter the Wild'}
+					{index === 4 && 'Unveil the Arcane'}
 				</motion.button>
 			</div>
 		</motion.div>
