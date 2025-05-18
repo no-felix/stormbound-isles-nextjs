@@ -9,15 +9,17 @@ import Gameplay from '@/components/sections/Gameplay';
 import Download from '@/components/sections/Download';
 import { useScrollSnapSection } from '@/hooks/useScrollSnapSection';
 
+const sectionNav = [
+  { id: 'hero', label: 'Hero' },
+  { id: 'features', label: 'Features' },
+  { id: 'islands', label: 'Islands' },
+  { id: 'gameplay', label: 'Gameplay' },
+  { id: 'download', label: 'Download' },
+];
+
 export default function Home() {
   // Section order must match the order in the DOM and Navbar
-  useScrollSnapSection([
-    'hero',
-    'features',
-    'islands',
-    'gameplay',
-    'download',
-  ], 80); // 80px navbar offset (matches --navbar-height)
+  useScrollSnapSection(sectionNav.map(s => s.id), 80); // 80px navbar offset (matches --navbar-height)
 
   return (
     <Layout>
