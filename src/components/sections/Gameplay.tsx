@@ -6,30 +6,30 @@ import Image from 'next/image';
 
 const gameplayFeatures = [
 	{
-		title: 'Team-Based Competition',
+		title: 'United or Alone',
 		description:
-			'Form alliances, coordinate strategies, and work together to overcome challenges and defeat other teams.',
+			'Forge bonds, betray, or stand apart.',
 		icon: '🤝',
 		color: 'from-[#5ad1ff] via-[#b36cff] to-[#ff5a36]',
 	},
 	{
-		title: 'Random Catastrophes',
+		title: 'Chaos Descends',
 		description:
-			'Face unpredictable events like meteor showers, tsunamis, or invasions that can change the game dynamic.',
+			'Meteors, storms, and the unexpected—adapt or perish.',
 		icon: '🌋',
 		color: 'from-[#ff5a36] via-[#ffe156] to-[#5ad1ff]',
 	},
 	{
-		title: 'Resource Management',
+		title: 'Scarcity and Ingenuity',
 		description:
-			'Gather and manage limited resources to build, craft, and develop your island.',
+			'What you gather, you become.',
 		icon: '📦',
 		color: 'from-[#ffe156] via-[#5affc6] to-[#b36cff]',
 	},
 	{
-		title: 'Island Defense',
+		title: 'Defend Your Claim',
 		description:
-			'Set up traps, build walls, and create defenses to protect your base from raids.',
+			'Walls may fall, but legends endure.',
 		icon: '🛡️',
 		color: 'from-[#b36cff] via-[#5affc6] to-[#5ad1ff]',
 	},
@@ -78,15 +78,13 @@ export default function Gameplay() {
 					<div className="md:w-1/2">
 						<FadeIn direction="left">
 							<h2 className="text-4xl md:text-5xl font-bold text-white section-headline">
-								Exciting Teamplay
+								Trials of the Isles
 							</h2>
 						</FadeIn>
 
 						<FadeIn direction="left" delay={0.2}>
 							<p className="text-xl text-gray-300 mb-8">
-								Stormbound Isles offers a unique approach to Minecraft
-								gameplay, focusing on team-based competition, resource
-								management, and strategic interactions.
+								Every dawn brings new alliances, every night new threats. Will you rise or fall?
 							</p>
 						</FadeIn>
 
