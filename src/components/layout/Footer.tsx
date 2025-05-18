@@ -19,7 +19,7 @@ export default function Footer() {
             <div>
               <h3 className="text-xl font-bold mb-6 text-white">Stormbound Isles</h3>
               <p className="text-gray-400 mb-6">
-                A Minecraft mod for version 1.21.1 built to support other mods like Create, Iris, and more, where five teams compete on five unique elemental islands.
+                Five teams. Five elements. One legend, ever-changing.
               </p>
               <div className="flex gap-4">
                 <Link 
@@ -44,7 +44,7 @@ export default function Footer() {
           
           <FadeIn direction="up" delay={0.2}>
             <div>
-              <h3 className="text-xl font-bold mb-6 text-white">Quick Links</h3>
+              <h3 className="text-xl font-bold mb-6 text-white">Quick Paths</h3>
               <nav className="space-y-4">
                 <Link 
                   href="#features" 
@@ -52,7 +52,7 @@ export default function Footer() {
                 >
                   <span className="inline-flex items-center">
                     <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mr-2 opacity-60 group-hover:opacity-100 transition-opacity"></span>
-                    Features
+                    Wonders
                   </span>
                 </Link>
                 <Link 
@@ -61,7 +61,7 @@ export default function Footer() {
                 >
                   <span className="inline-flex items-center">
                     <span className="w-1.5 h-1.5 rounded-full bg-purple-400 mr-2 opacity-60 group-hover:opacity-100 transition-opacity"></span>
-                    Islands
+                    The Isles
                   </span>
                 </Link>
                 <Link 
@@ -70,7 +70,7 @@ export default function Footer() {
                 >
                   <span className="inline-flex items-center">
                     <span className="w-1.5 h-1.5 rounded-full bg-red-400 mr-2 opacity-60 group-hover:opacity-100 transition-opacity"></span>
-                    Gameplay
+                    Trials
                   </span>
                 </Link>
                 <Link 
@@ -79,7 +79,7 @@ export default function Footer() {
                 >
                   <span className="inline-flex items-center">
                     <span className="w-1.5 h-1.5 rounded-full bg-green-400 mr-2 opacity-60 group-hover:opacity-100 transition-opacity"></span>
-                    Download
+                    Begin
                   </span>
                 </Link>
                 <Link 
@@ -90,7 +90,7 @@ export default function Footer() {
                 >
                   <span className="inline-flex items-center">
                     <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mr-2 opacity-60 group-hover:opacity-100 transition-opacity"></span>
-                    GitHub Repository
+                    GitHub Archive
                   </span>
                 </Link>
               </nav>
@@ -99,24 +99,23 @@ export default function Footer() {
           
           <FadeIn direction="up" delay={0.3}>
             <div>
-              <h3 className="text-xl font-bold mb-6 text-white">About The Mod</h3>
+              <h3 className="text-xl font-bold mb-6 text-white">The Legend</h3>
               <p className="text-gray-400 mb-4">
-                Stormbound Isles is a Minecraft project for version 1.21.1 that brings team competition, unique elemental islands, and catastrophic events. The mod is designed for compatibility with popular Fabric mods like Create, Iris, Simple Voice Chat, Sodium, and more to enhance your gameplay experience.
+                Stormbound Isles: Where the elements rule, and fate is forged in the unknown. Compatible with the greatest mods—your adventure, your way.
               </p>
             </div>
           </FadeIn>
         </div>
-        
-        {/* Divider with gradient */}
-        <div className="mt-16 mb-8 relative">
-          <div className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent pointer-events-none" style={{top: 0}}></div>
+      </div>
+      {/* Divider and copyright*/}
+      <div className="w-full flex flex-col items-center" style={{zIndex: 20}}>
+        <div className="mt-40 mb-8 w-full relative">
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-gray-700 to-transparent pointer-events-none"></div>
         </div>
-        
-        {/* Copyright */}
-        <div className="text-center mt-8">
+        <div className="text-center mt-8 w-full">
           <FadeIn direction="up" delay={0.4}>
             <p className="text-gray-500">
-              &copy; {new Date().getFullYear()} Stormbound Isles. All rights reserved.
+              &copy; 2025 Stormbound Isles. All rights reserved.
             </p>
           </FadeIn>
         </div>
