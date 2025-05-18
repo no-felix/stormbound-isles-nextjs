@@ -16,8 +16,8 @@ const installSteps = [
 	{
 		number: '02',
 		title: 'Download the Mod',
-		description: 'Get the latest version of Stormbound Isles from GitHub',
-		link: 'https://github.com/no-felix/stormbound-isles/releases',
+		description: 'Get the latest version of Stormbound Isles from the download button on this page.',
+		link: undefined,
 		color: 'from-blue-400 to-cyan-400',
 		icon: '💾',
 	},
@@ -58,13 +58,12 @@ export default function Download() {
 				<div className="text-center mb-16">
 					<FadeIn>
 						<h2 className="text-4xl md:text-5xl font-bold text-white section-headline">
-							Download & Install
+							Begin Your Journey
 						</h2>
 					</FadeIn>
 					<FadeIn delay={0.2}>
 						<p className="text-lg sm:text-xl text-gray-200 max-w-3xl mx-auto">
-							Get started with Stormbound Isles, built to support other mods like
-							Create, Iris, and more, in just a few simple steps
+							The Isles call. Prepare, enter, and let the unknown shape your story.
 						</p>
 					</FadeIn>
 				</div>
@@ -122,7 +121,7 @@ export default function Download() {
 														rel="noopener noreferrer"
 														className="text-blue-400 hover:text-blue-300 inline-flex items-center"
 													>
-														Visit Website
+														Visit the Portal
 														<svg
 															xmlns="http://www.w3.org/2000/svg"
 															className="h-4 w-4 ml-1"
@@ -156,54 +155,38 @@ export default function Download() {
 										⬇️
 									</div>
 									<h3 className="text-2xl font-bold text-white mb-2">
-										Direct Download
+										Direct Descent
 									</h3>
 									<p className="text-gray-300 mb-6">
-										Get the latest version of Stormbound Isles
+										Claim the latest release
 									</p>
 								</div>
 
 								<div className="space-y-4">
-									<a
-										href="https://github.com/no-felix/stormbound-isles/releases/latest"
-										target="_blank"
-										rel="noopener noreferrer"
-										className="flex items-center justify-center w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
-									>
-										Download Latest Release
-									</a>
-
-									<a
-										href="https://github.com/no-felix/stormbound-isles"
-										target="_blank"
-										rel="noopener noreferrer"
-										className="flex items-center justify-center w-full py-3 px-4 bg-white/10 hover:bg-white/20 text-white font-medium rounded-lg transition-colors"
-									>
-										View Source Code
-									</a>
+									<div className="flex items-center justify-center w-full py-3 px-4 bg-gray-700 text-white font-medium rounded-lg opacity-60 cursor-not-allowed">
+										Coming Soon
+									</div>
 								</div>
 
 								<div className="mt-8 pt-6 border-t border-white/10">
 									<div className="flex items-center justify-between">
 										<div>
 											<span className="text-sm text-gray-400">
-												Latest Version
+												Status
 											</span>
-											<p className="font-medium text-white">v1.2.0</p>
+											<p className="font-medium text-white">In Development</p>
 										</div>
 										<div>
 											<span className="text-sm text-gray-400">
-												Minecraft Version
+												For Minecraft
 											</span>
 											<p className="font-medium text-white">1.21.1</p>
 										</div>
 										<div>
 											<span className="text-sm text-gray-400">
-												Last Updated
+												Last Awakening
 											</span>
-											<p className="font-medium text-white">
-												May 15, 2025
-											</p>
+											<p className="font-medium text-white">May 18, 2025</p>
 										</div>
 									</div>
 								</div>
