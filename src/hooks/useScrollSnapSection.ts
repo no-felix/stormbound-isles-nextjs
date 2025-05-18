@@ -9,7 +9,6 @@ import { useEffect } from 'react';
 export function useScrollSnapSection(sectionIds: string[], offsetPx: number = 0) {
   useEffect(() => {
     let ticking = false;
-    let lastScrollY = window.scrollY;
     let timeout: number | null = null;
 
     function getSectionRects() {
@@ -38,7 +37,6 @@ export function useScrollSnapSection(sectionIds: string[], offsetPx: number = 0)
     }
 
     function onScroll() {
-      lastScrollY = window.scrollY;
       if (!ticking) {
         window.requestAnimationFrame(() => {
           if (timeout) window.clearTimeout(timeout);

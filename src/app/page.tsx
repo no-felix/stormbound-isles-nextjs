@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import Layout from '@/components/layout/Layout';
 import Hero from '@/components/sections/Hero';
 import Features from '@/components/sections/Features';
