@@ -54,6 +54,12 @@ section {
   padding: 0;
   position: relative;
   scroll-margin-top: var(--navbar-height); /* This ensures proper scroll positioning with fixed navbar */
+  scroll-snap-align: start;
+}
+
+main {
+  scroll-snap-type: y mandatory;
+  overflow-y: auto;
 }
 
 /* Styled section dividers */

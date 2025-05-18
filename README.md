@@ -140,3 +140,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Framer Motion](https://www.framer.com/motion/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Geist Font](https://vercel.com/font)
+- [react-bits](https://github.com/react-bits) - Used for `Squares`, `Particles`, and `Aurora` components.
