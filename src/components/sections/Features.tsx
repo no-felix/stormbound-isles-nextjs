@@ -5,44 +5,44 @@ import Particles from './Particles';
 
 const features = [
 	{
-		title: '5 Elemental Islands',
+		title: 'Elemental Realms',
 		description:
-			'Volcano, Ice/Snow, Desert, Mushroom, Crystal/Magic – each island offers unique challenges and resources.',
+			'Each a world of secrets and peril.',
 		icon: '🏝️',
 		color: 'from-orange-500 via-pink-500 to-blue-400',
 	},
 	{
-		title: 'Catastrophes',
+		title: 'Forces Unleashed',
 		description:
-			'Random or event-triggered catastrophes influence gameplay and challenge teams.',
+			'Unpredictable events shape every journey.',
 		icon: '🌪️',
 		color: 'from-blue-400 via-cyan-400 to-purple-500',
 	},
 	{
-		title: 'Team Passive Bonuses',
+		title: 'Elemental Gifts',
 		description:
-			'Each team receives bonuses depending on island type and position.',
+			'Every team, a unique power. Every island, a new fate.',
 		icon: '✨',
 		color: 'from-yellow-400 via-amber-400 to-orange-500',
 	},
 	{
-		title: 'Scoring Phase',
+		title: 'The Reckoning',
 		description:
-			'Points for builds, survival, and creativity – including a jury system.',
+			'Creativity and survival are rewarded in the end.',
 		icon: '🏆',
 		color: 'from-pink-400 via-purple-400 to-indigo-400',
 	},
 	{
-		title: 'PvP Phase',
+		title: 'The Clash',
 		description:
-			'After the protection week, raids and battles between teams are possible.',
+			'When the calm breaks, only the bold endure.',
 		icon: '⚔️',
 		color: 'from-red-500 via-orange-500 to-yellow-400',
 	},
 	{
-		title: 'Mod Compatibility',
+		title: 'Boundless Modding',
 		description:
-			'Supports mods like Create, Iris, Simple Voice Chat, Sodium, and more.',
+			'Crafted for discovery, compatible with legends.',
 		icon: '🛠️',
 		color: 'from-green-400 via-cyan-400 to-blue-400',
 	},
@@ -69,7 +69,7 @@ export default function Features() {
 			<div className="relative z-20 mb-12 text-center">
 				<Reveal>
 					<h2 className="text-4xl md:text-5xl font-bold text-white section-headline">
-						Features
+						Wonders
 					</h2>
 				</Reveal>
 			</div>
