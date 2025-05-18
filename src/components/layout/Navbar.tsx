@@ -1,10 +1,10 @@
 'use client';
 
 const navLinks = [
-  { id: 'features', label: 'Features' },
-  { id: 'islands', label: 'Islands' },
-  { id: 'gameplay', label: 'Gameplay' },
-  { id: 'download', label: 'Download' },
+  { id: 'features', label: 'Wonders' },
+  { id: 'islands', label: 'The Isles' },
+  { id: 'gameplay', label: 'Trials' },
+  { id: 'download', label: 'Begin' },
 ];
 
 function scrollToSection(id: string) {
