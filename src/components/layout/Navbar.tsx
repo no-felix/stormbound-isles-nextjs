@@ -32,11 +32,31 @@ function scrollToSection(id: string) {
 }
 
 import React, { useEffect, useState } from 'react';
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [active, setActive] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
+  
+  // Animation values for the gradient text
+  const gradientProgress = useMotionValue(0);
+  const gradientPosition = useMotionValue(0);
+  const textOpacity = useTransform(gradientProgress, [0, 1], [0, 1]);
+  const whiteTextOpacity = useTransform(gradientProgress, [0, 1], [1, 0]);
+  
+  useEffect(() => {
+    // Animate the gradient text when scroll state changes
+    if (isScrolled) {
+      // Animate to gradient text with random position
+      const randomPosition = Math.random() * 100;
+      animate(gradientPosition, randomPosition, { duration: 0.3 });
+      animate(gradientProgress, 1, { duration: 0.5 });
+    } else {
+      // Animate back to white text
+      animate(gradientProgress, 0, { duration: 0.5 });
+    }
+  }, [isScrolled, gradientProgress, gradientPosition]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -66,17 +86,54 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // This useEffect adds a shimmer animation when the navbar sticks
+  useEffect(() => {
+    if (isScrolled) {
+      // Shimmer effect when navbar becomes sticky
+      const timeout = setTimeout(() => {
+        const shimmerElement = document.querySelector('.navbar-title-shimmer');
+        if (shimmerElement) {
+          shimmerElement.classList.add('active');
+          setTimeout(() => {
+            shimmerElement.classList.remove('active');
+          }, 700);
+        }
+      }, 100);
+      return () => clearTimeout(timeout);
+    }
+  }, [isScrolled]);
+
   const handleNav = (id: string) => {
     setIsMenuOpen(false);
     scrollToSection(id);
   };
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-glass shadow-lg backdrop-blur-md' : 'bg-transparent'}`} style={{ height: 'var(--navbar-height)' }}>
-      <div className="container mx-auto px-4 flex items-center justify-between h-full">
-        {/* Logo and branding */}
-        <div className="font-bold text-xl text-white cursor-pointer" onClick={() => handleNav('hero')}>
-          Stormbound Isles
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-glass shadow-lg backdrop-blur-md' : 'bg-transparent'}`} style={{ height: 'var(--navbar-height)' }}>      <div className="container mx-auto px-4 flex items-center justify-between h-full">
+        {/* Logo and branding */}        <div className="font-bold text-xl relative cursor-pointer overflow-hidden" onClick={() => handleNav('hero')}>
+          {/* Shimmer effect overlay */}
+          <div className="navbar-title-shimmer absolute inset-0 z-20 pointer-events-none"></div>
+          
+          {/* White text layer */}
+          <motion.span 
+            className="absolute inset-0 text-white z-10"
+            style={{ opacity: whiteTextOpacity }}
+          >
+            Stormbound Isles
+          </motion.span>
+            {/* Gradient text layer */}
+          <motion.span 
+            className={`gradient-text ${isScrolled ? 'animate-gradient' : ''}`}
+            style={{ 
+              opacity: textOpacity,
+              backgroundPositionX: useTransform(
+                gradientPosition, 
+                value => `${value}%`
+              )
+            }}
+          >
+            Stormbound Isles
+          </motion.span>
         </div>
         {/* Desktop nav */}
         <ul className="hidden md:flex gap-8">
