@@ -24,13 +24,13 @@ const FUNNY_MESSAGES = [
 const ISLAND_EMOJIS = ["🏝️", "🌋", "❄️", "🏜️", "🍄", "💎"];
 
 const SAHUR_IMAGES = [
-  "/sahur/normalsahur.webp",
-  "/sahur/sahurupsidedown.webp",
-  "/sahur/sahurhead.webp",
-  "/sahur/sahurexplaining.webp",
-  "/sahur/sahurlowquality.webp",
-  "/sahur/sahuruglymerch.png",
-  "/sahur/sahurdead.webp",
+  "/stormbound-isles-nextjs/sahur/normalsahur.webp",
+  "/stormbound-isles-nextjs/sahur/sahurupsidedown.webp",
+  "/stormbound-isles-nextjs/sahur/sahurhead.webp",
+  "/stormbound-isles-nextjs/sahur/sahurexplaining.webp",
+  "/stormbound-isles-nextjs/sahur/sahurlowquality.webp",
+  "/stormbound-isles-nextjs/sahur/sahuruglymerch.png",
+  "/stormbound-isles-nextjs/sahur/sahurdead.webp",
 ];
 
 export default function NotFound() {
