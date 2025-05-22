@@ -6,6 +6,7 @@ import FadeIn from '@/components/animations/FadeIn';
 import Reveal from '@/components/animations/Reveal';
 import { useInView } from 'react-intersection-observer';
 import DocumentationParticles from './DocumentationParticles';
+import NotImplementedLink from '@/components/ui/NotImplementedLink';
 
 const CONSTRUCTION_EMOJIS = ['🔨', '🛠️', '🔧', '📐', '📝', '✏️', '⚙️', '🧰', '👷', '📊', '📈'];
 
@@ -193,17 +194,11 @@ export default function Documentation() {
             </div>
           </motion.div>
         </FadeIn>
-        
-        <FadeIn delay={0.8} direction="up">
+          <FadeIn delay={0.8} direction="up">
           <div className="flex gap-4">
-            <motion.a 
-              href="#" 
-              className="px-6 py-3 rounded-full bg-[rgba(90,209,255,0.2)] text-[#5ad1ff] border border-[rgba(90,209,255,0.3)] font-medium hover:bg-[rgba(90,209,255,0.3)] transition-all"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-            >
+            <NotImplementedLink buttonStyle="primary" icon="📬">
               Subscribe for Updates
-            </motion.a>
+            </NotImplementedLink>
             <motion.a 
               href="https://github.com/no-felix/stormbound-isles" 
               target="_blank"
