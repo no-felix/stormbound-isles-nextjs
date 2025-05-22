@@ -6,19 +6,32 @@ import { motion, useAnimate } from "framer-motion";
 import Footer from "@/components/layout/Footer";
 import GradientBackground from "@/components/ui/GradientBackground";
 
-// Array of funny messages for the 404 page
 const FUNNY_MESSAGES = [
   "Oops! You've ventured into the void between islands.",
   "This path is still lost in the storm.",
   "Even the elements can't find this page.",
   "The island you're looking for has drifted away.",
   "This spell is still being crafted by our wizards.",
-  "This feature is busy competing in the Isle Games.",
+  "This feature is busy competing in Stormbound Isles.",
   "Our elemental spirits are still constructing this area.",
+  "You found the secret island of missing pages!",
+  "Looks like Sahur got here before you did.",
+  "404: The wind blew this page away.",
+  "You must have taken a wrong portal.",
+  "This page is hiding behind a mushroom."
 ];
 
-// Array of island emoji combinations
 const ISLAND_EMOJIS = ["🏝️", "🌋", "❄️", "🏜️", "🍄", "💎"];
+
+const SAHUR_IMAGES = [
+  "/sahur/normalsahur.webp",
+  "/sahur/sahurupsidedown.webp",
+  "/sahur/sahurhead.webp",
+  "/sahur/sahurexplaining.webp",
+  "/sahur/sahurlowquality.webp",
+  "/sahur/sahuruglymerch.png",
+  "/sahur/sahurdead.webp",
+];
 
 export default function NotFound() {
   const [scope, animate] = useAnimate();
@@ -26,8 +39,9 @@ export default function NotFound() {
   const [islandRotation, setIslandRotation] = useState(0);
   const [isCompassAnimating, setIsCompassAnimating] = useState(false);
   const [dots, setDots] = useState<Array<{id: string, x: number, y: number, duration: number, delay: number}>>([]);
+  const [sahur, setSahur] = useState<{src: string; x: number; y: number; rotate: number; scale: number} | null>(null);
   
-  // Generate random dots only on the client side
+  // Generate random dots and Sahur image only on the client side
   useEffect(() => {
     const newDots = Array.from({ length: 50 }).map((_, i) => ({
       id: `dot-${i}-${Math.random().toString(36).substring(2, 9)}`,
@@ -37,6 +51,16 @@ export default function NotFound() {
       delay: Math.random() * 5
     }));
     setDots(newDots);
+
+    // Setup Sahur
+    const randomSahurSrc = SAHUR_IMAGES[Math.floor(Math.random() * SAHUR_IMAGES.length)];
+    setSahur({
+      src: randomSahurSrc,
+      x: Math.random() * 80 + 10, // Keep Sahur somewhat within bounds initially
+      y: Math.random() * 80 + 10,
+      rotate: Math.random() * 360 - 180,
+      scale: 0.8 + Math.random() * 0.4, // Random initial scale
+    });
   }, []);
 
   // Set a random funny message and animations on mount
@@ -147,6 +171,39 @@ export default function NotFound() {
                 </motion.div>
               );
             })}
+
+            {/* Wandering Sahur */}
+            {sahur && (
+              <motion.img
+                src={sahur.src}
+                alt="A lost Sahur"
+                className="absolute w-32 h-auto z-[5]" // z-index between dots/islands and content
+                style={{
+                  left: `${sahur.x}%`,
+                  top: `${sahur.y}%`,
+                  scale: sahur.scale,
+                  rotate: sahur.rotate,
+                }}
+                animate={{
+                  x: [`${sahur.x}%`, `${Math.random() * 80 + 10}%`, `${Math.random() * 80 + 10}%`, `${sahur.x}%`], // Wander horizontally
+                  y: [`${sahur.y}%`, `${Math.random() * 80 + 10}%`, `${Math.random() * 80 + 10}%`, `${sahur.y}%`], // Wander vertically
+                  rotate: [sahur.rotate, sahur.rotate + (Math.random() > 0.5 ? 20 : -20), sahur.rotate + (Math.random() > 0.5 ? -15 : 15), sahur.rotate],
+                  opacity: [0, 0.7, 0.7, 0.7, 0], // Fade in, stay, fade out
+                }}
+                transition={{
+                  duration: 20 + Math.random() * 10, // Longer duration for slow wandering
+                  repeat: Infinity,
+                  repeatDelay: 5 + Math.random() * 5, // Wait a bit before reappearing
+                  ease: "easeInOut",
+                  opacity: {
+                    times: [0, 0.1, 0.8, 0.9, 1], // Control fade in/out timing
+                    duration: 20 + Math.random() * 10,
+                    repeat: Infinity,
+                    repeatDelay: 5 + Math.random() * 5,
+                  }
+                }}
+              />
+            )}
           </div>
           
           {/* Content container */}
