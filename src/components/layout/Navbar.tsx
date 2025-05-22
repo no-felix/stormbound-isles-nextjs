@@ -4,6 +4,7 @@ const navLinks = [
   { id: 'features', label: 'Wonders' },
   { id: 'islands', label: 'The Isles' },
   { id: 'gameplay', label: 'Trials' },
+  { id: 'documentation', label: 'Docs' },
   { id: 'download', label: 'Begin' },
 ];
 
