@@ -25,8 +25,21 @@ export default function NotFound() {
   const [message, setMessage] = useState("");
   const [islandRotation, setIslandRotation] = useState(0);
   const [isCompassAnimating, setIsCompassAnimating] = useState(false);
+  const [dots, setDots] = useState<Array<{id: string, x: number, y: number, duration: number, delay: number}>>([]);
+  
+  // Generate random dots only on the client side
+  useEffect(() => {
+    const newDots = Array.from({ length: 50 }).map((_, i) => ({
+      id: `dot-${i}-${Math.random().toString(36).substring(2, 9)}`,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      duration: 3 + Math.random() * 2,
+      delay: Math.random() * 5
+    }));
+    setDots(newDots);
+  }, []);
 
-  // Set a random funny message on mount
+  // Set a random funny message and animations on mount
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * FUNNY_MESSAGES.length);
     setMessage(FUNNY_MESSAGES[randomIndex]);
@@ -54,44 +67,43 @@ export default function NotFound() {
       setTimeout(() => setIsCompassAnimating(false), 1000);
     }
   };
+  
   return (
     <Layout>
       <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden py-16 px-4">
-        {" "}        {/* Animated background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#141824] to-[#1c2133] z-0" />{" "}
+        {/* Animated background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#141824] to-[#1c2133] z-0" />
         <GradientBackground
           type="radial"
           colorFrom="rgba(90,209,255,0.4)"
           colorTo="rgba(179,108,255,0.02)"
           className="w-full h-full"
         />
-        {/* Animated elements in the background */}        <div className="absolute inset-0 overflow-hidden z-1">
-          {" "}
+        
+        {/* Animated elements in the background */}
+        <div className="absolute inset-0 overflow-hidden z-1">
           {/* Randomly positioned dots */}
-          {Array.from({ length: 50 }).map((_, i) => {
-            const uniqueId = `dot-${i}-${Math.random()
-              .toString(36)
-              .substring(2, 9)}`;
-            return (
-              <motion.div
-                key={uniqueId}
-                className="absolute w-1 h-1 rounded-full bg-white/20"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                }}
-                animate={{
-                  opacity: [0.1, 0.5, 0.1],
-                  scale: [1, 1.5, 1],
-                }}
-                transition={{
-                  duration: 3 + Math.random() * 2,
-                  repeat: Infinity,
-                  delay: Math.random() * 5,
-                }}
-              />
-            );
-          })}          {/* Floating islands */}
+          {dots.map((dot) => (
+            <motion.div
+              key={dot.id}
+              className="absolute w-1 h-1 rounded-full bg-white/20"
+              style={{
+                left: `${dot.x}%`,
+                top: `${dot.y}%`,
+              }}
+              animate={{
+                opacity: [0.1, 0.5, 0.1],
+                scale: [1, 1.5, 1],
+              }}
+              transition={{
+                duration: dot.duration,
+                repeat: Infinity,
+                delay: dot.delay,
+              }}
+            />
+          ))}
+          
+          {/* Floating islands */}
           {ISLAND_EMOJIS.map((emoji, i) => {
             // Calculate position to distribute emojis across the viewport
             const angle = (i / ISLAND_EMOJIS.length) * Math.PI * 2; // Distribute in a circle
@@ -135,6 +147,7 @@ export default function NotFound() {
             );
           })}
         </div>
+        
         {/* Content container */}
         <div className="relative z-10 text-center max-w-3xl mx-auto">
           {/* 404 animated text */}
@@ -195,6 +208,7 @@ export default function NotFound() {
                 <span className="text-xl">🏠</span>
               </motion.div>
             </Link>
+            
             <motion.div
               className="px-6 py-3 rounded-full bg-[rgba(255,255,255,0.05)] text-white/80 border border-[rgba(255,255,255,0.1)] font-medium hover:bg-[rgba(255,255,255,0.1)] transition-all flex items-center gap-2 cursor-pointer"
               whileHover={{ scale: 1.05 }}
@@ -212,8 +226,10 @@ export default function NotFound() {
               >
                 🧭
               </motion.span>
-            </motion.div>{" "}
-          </div>          {/* Glowing effect */}
+            </motion.div>
+          </div>
+          
+          {/* Glowing effect */}
           <motion.div
             ref={scope}
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vh] h-[60vh] rounded-full bg-gradient-radial from-[rgba(90,209,255,0.3)] to-transparent blur-3xl z-[-1]"
