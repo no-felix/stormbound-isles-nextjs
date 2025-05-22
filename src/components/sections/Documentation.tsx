@@ -176,7 +176,7 @@ export default function Documentation() {
               </h3>
               
               <p className="text-white/70 mb-6">
-                We're building something amazing. Check back soon!
+                We&apos;re building something amazing. Check back soon!
               </p>
               
               <div className="w-full h-4 bg-[rgba(255,255,255,0.1)] rounded-full overflow-hidden">
