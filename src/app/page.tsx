@@ -6,6 +6,7 @@ import Hero from '@/components/sections/Hero';
 import Features from '@/components/sections/Features';
 import Islands from '@/components/sections/Islands';
 import Gameplay from '@/components/sections/Gameplay';
+import Documentation from '@/components/sections/Documentation';
 import Download from '@/components/sections/Download';
 import { useScrollSnapSection } from '@/hooks/useScrollSnapSection';
 
@@ -14,6 +15,7 @@ const sectionNav = [
   { id: 'features', label: 'Features' },
   { id: 'islands', label: 'Islands' },
   { id: 'gameplay', label: 'Gameplay' },
+  { id: 'documentation', label: 'Documentation' },
   { id: 'download', label: 'Download' },
 ];
 
@@ -32,15 +34,16 @@ export default function Home() {
           <Features />
         </section>
         
-        <section id="islands" className="relative pt-24 pb-36 bg-[#141824]">
+        <section id="islands" className="relative pt-24 pb-36 bg-[#1c2133]">
           <Islands />
         </section>
-        
-        <section id="gameplay" className="relative pt-24 pb-36 bg-[#1c2133]">
+          <section id="gameplay" className="relative pt-24 pb-36 bg-[#1c2133]">
           <Gameplay />
+        </section>        <section id="documentation" className="relative h-screen bg-[#141824] overflow-hidden">
+          <Documentation />
         </section>
         
-        <section id="download" className="relative pt-24 pb-36 bg-[#141824]">
+        <section id="download" className="relative pt-24 pb-36 bg-[#1c2133]">
           <Download />
         </section>
       </main>
