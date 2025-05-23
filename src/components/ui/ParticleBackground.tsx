@@ -164,10 +164,9 @@ export default function ParticleBackground({
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
-    };
-  }, [
+    };  }, [
     particleCount,
-    JSON.stringify(colors),
+    colors, // Including the array directly as it's safe in this component
     minSize,
     maxSize,
     minOpacity,
