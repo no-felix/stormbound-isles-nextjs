@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import { motion, AnimatePresence, useAnimate } from 'framer-motion';
 import FadeIn from '@/components/animations/FadeIn';
 import Reveal from '@/components/animations/Reveal';
@@ -9,6 +9,25 @@ import ParticleBackground from '@/components/animations/ParticleBackground';
 import NotImplementedLink from '@/components/ui/NotImplementedLink';
 
 const CONSTRUCTION_EMOJIS = ['🔨', '🛠️', '🔧', '📐', '📝', '✏️', '⚙️', '🧰', '👷', '📊', '📈'];
+
+const StableParticleBackground = memo(() => (
+  <ParticleBackground 
+    particleCount={30}
+    colors={['#5ad1ff', '#b36cff', '#5affc6', '#ff5a36', '#ffe156']}
+    minSize={1}
+    maxSize={4}
+    minOpacity={0.2}
+    maxOpacity={0.7}
+    speed={1}
+    showConnections={true}
+    connectionDistance={100}
+    connectionColor={'#5ad1ff'}
+    connectionOpacity={0.2}
+    connectionWidth={0.5}
+  />
+));
+
+StableParticleBackground.displayName = 'StableParticleBackground';
 
 export default function Documentation() {
   const [ref, inView] = useInView({
@@ -64,20 +83,7 @@ export default function Documentation() {
       <div className="absolute inset-0 w-full h-full bg-gradient-to-tr from-[#1a1e2d] via-[#2d3250] to-[#1c2133] opacity-50 z-0" />
       
       {/* Particles background */}
-      <ParticleBackground 
-        particleCount={30}
-        colors={['#5ad1ff', '#b36cff', '#5affc6', '#ff5a36', '#ffe156']}
-        minSize={1}
-        maxSize={4}
-        minOpacity={0.2}
-        maxOpacity={0.7}
-        speed={1}
-        showConnections={true}
-        connectionDistance={100}
-        connectionColor={'#5ad1ff'}
-        connectionOpacity={0.2}
-        connectionWidth={0.5}
-      />
+      <StableParticleBackground />
       
       {/* Floating emojis */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">

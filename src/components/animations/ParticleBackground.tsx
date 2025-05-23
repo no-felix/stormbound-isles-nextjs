@@ -56,8 +56,7 @@ export default function ParticleBackground({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particles = useRef<Particle[]>([]);
   const animationRef = useRef<number | undefined>(undefined);
-  
-  // Initialize particles
+    // Initialize particles
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -74,20 +73,21 @@ export default function ParticleBackground({
     handleResize();
     window.addEventListener('resize', handleResize);
     
-    // Create particles
-    particles.current = [];
-    for (let i = 0; i < particleCount; i++) {
-      particles.current.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * (maxSize - minSize) + minSize,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        velocity: {
-          x: (Math.random() - 0.5) * speed * 0.5,
-          y: (Math.random() - 0.5) * speed * 0.5
-        },
-        opacity: Math.random() * (maxOpacity - minOpacity) + minOpacity
-      });
+    // Create particles only once if they don't exist
+    if (particles.current.length === 0) {
+      for (let i = 0; i < particleCount; i++) {
+        particles.current.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * (maxSize - minSize) + minSize,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          velocity: {
+            x: (Math.random() - 0.5) * speed * 0.5,
+            y: (Math.random() - 0.5) * speed * 0.5
+          },
+          opacity: Math.random() * (maxOpacity - minOpacity) + minOpacity
+        });
+      }
     }
     
     // Animation loop
