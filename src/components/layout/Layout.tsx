@@ -1,15 +1,13 @@
-import React from 'react';
-import Navbar from './Navbar';
-import Footer from './Footer';
+"use client";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
-      <main className="flex-grow flex flex-col">
-        {children}
-      </main>
-      <Footer />
-    </div>
-  );
+import React from "react";
+
+interface LayoutProps {
+  children: React.ReactNode;
 }
+
+const Layout: React.FC<LayoutProps> = ({ children }) => {
+  return <div className="min-h-screen flex flex-col">{children}</div>;
+};
+
+export default Layout;

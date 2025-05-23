@@ -1,51 +1,18 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Layout from '@/components/layout/Layout';
-import Hero from '@/components/sections/Hero';
-import Features from '@/components/sections/Features';
-import Islands from '@/components/sections/Islands';
-import Gameplay from '@/components/sections/Gameplay';
-import Documentation from '@/components/sections/Documentation';
-import Download from '@/components/sections/Download';
-import { useScrollSnapSection } from '@/hooks/useScrollSnapSection';
+import React from "react";
+import Layout from "@/components/layout/Layout";
 
-const sectionNav = [
-  { id: 'hero', label: 'Hero' },
-  { id: 'features', label: 'Features' },
-  { id: 'islands', label: 'Islands' },
-  { id: 'gameplay', label: 'Gameplay' },
-  { id: 'documentation', label: 'Documentation' },
-  { id: 'download', label: 'Download' },
-];
-
-export default function Home() {
-  // Section order must match the order in the DOM and Navbar
-  useScrollSnapSection(sectionNav.map(s => s.id), 80); // 80px navbar offset (matches --navbar-height)
-
+export default function HomePage() {
   return (
     <Layout>
-      <main className="relative overflow-hidden">
-        <section id="hero" className="relative">
-          <Hero />
-        </section>
-        
-        <section id="features" className="relative pt-24 pb-36 bg-[#1c2133]">
-          <Features />
-        </section>
-        
-        <section id="islands" className="relative pt-24 pb-36 bg-[#1c2133]">
-          <Islands />
-        </section>
-          <section id="gameplay" className="relative pt-24 pb-36 bg-[#1c2133]">
-          <Gameplay />
-        </section>        <section id="documentation" className="relative h-screen bg-[#141824] overflow-hidden">
-          <Documentation />
-        </section>
-        
-        <section id="download" className="relative pt-24 pb-36 bg-[#1c2133]">
-          <Download />
-        </section>
+      <main className="flex flex-col items-center justify-center min-h-screen p-4">
+        <h1 className="text-4xl font-bold mb-4 gradient-text animate-gradient">
+          Stormbound Isles
+        </h1>
+        <p className="text-xl text-center max-w-xl mb-8">
+          Welcome to Stormbound Isles - Project under development
+        </p>
       </main>
     </Layout>
   );
