@@ -1,7 +1,7 @@
 import React from 'react';
 import FadeIn from '../animations/FadeIn';
 import Reveal from '../animations/Reveal';
-import ParticleBackground from '@/components/ui/ParticleBackground';
+import ParticleBackground from '@/components/animations/ParticleBackground';
 
 const features = [
 	{

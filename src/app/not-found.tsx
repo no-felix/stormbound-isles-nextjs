@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, useAnimate } from "framer-motion";
 import Footer from "@/components/layout/Footer";
-import GradientBackground from "@/components/ui/GradientBackground";
-import ParticleBackground from "@/components/ui/ParticleBackground";
+import GradientBackground from "@/components/animations/GradientBackground";
+import ParticleBackground from "@/components/animations/ParticleBackground";
 
 const FUNNY_MESSAGES = [
   "Oops! You've ventured into the void between islands.",

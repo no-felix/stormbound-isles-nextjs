@@ -5,7 +5,7 @@ import { motion, AnimatePresence, useAnimate } from 'framer-motion';
 import FadeIn from '@/components/animations/FadeIn';
 import Reveal from '@/components/animations/Reveal';
 import { useInView } from 'react-intersection-observer';
-import ParticleBackground from '@/components/ui/ParticleBackground';
+import ParticleBackground from '@/components/animations/ParticleBackground';
 import NotImplementedLink from '@/components/ui/NotImplementedLink';
 
 const CONSTRUCTION_EMOJIS = ['🔨', '🛠️', '🔧', '📐', '📝', '✏️', '⚙️', '🧰', '👷', '📊', '📈'];
