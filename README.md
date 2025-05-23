@@ -4,9 +4,9 @@ A modern website built with Next.js for the Stormbound Isles Minecraft mod. This
 
 ## About the Mod
 
-Stormbound Isles is a Minecraft mod for version 1.21.1 built to support other mods like Create, Iris, Simple Voice Chat, Sodium, and more, featuring:
+Stormbound Isles is a Minecraft mod for version 1.21.1 featuring:
 
-- Five elemental-themed islands: Volcano, Ice/Snow, Desert, Mushroom, and Crystal/Magic
+- Five elemental-themed islands: Volcano, Ice, Desert, Mushroom, and Crystal
 - Team-based competition with building, fighting, and survival challenges
 - Random catastrophes that influence gameplay
 - Team passive bonuses depending on island and position
@@ -16,11 +16,11 @@ Stormbound Isles is a Minecraft mod for version 1.21.1 built to support other mo
 
 ## Tech Stack
 
-- [Next.js 15](https://nextjs.org/) - React framework
+- [Next.js 15](https://nextjs.org/) - React framework with App Router
 - [TypeScript](https://www.typescriptlang.org/) - Type-safe JavaScript
 - [Tailwind CSS 4](https://tailwindcss.com/) - Utility-first CSS framework
 - [Framer Motion](https://www.framer.com/motion/) - Animation library
-- [React Intersection Observer](https://github.com/thebuilder/react-intersection-observer) - Scroll detection
+- [OGL](https://github.com/oframe/ogl) - WebGL library
 
 ## Getting Started
 
@@ -48,7 +48,7 @@ yarn install
 
 ### Development
 
-Start the development server:
+Start the development server with Turbopack:
 
 ```bash
 npm run dev
@@ -80,10 +80,13 @@ yarn start
 
 - `/src/app` - Next.js app router and main layout
 - `/src/components` - React components
-  - `/animations` - Animation components (FadeIn, Reveal, Parallax)
-  - `/layout` - Layout components (Navbar, Footer)
-  - `/sections` - Main page sections (Hero, Features, Islands, etc.)
-- `/public` - Static assets (images, fonts, etc.)
+  - `/layout` - Layout components (Footer, Layout)
+  - `/sections` - Main page sections (Hero, Features, Islands, CallToAction)
+  - `FloatingParticles.tsx` - Interactive background particles
+  - `ScrollToTop.tsx` - Scrolling utility
+  - `SectionDivider.tsx` - Section separator with gradient
+- `/src/assets` - Asset files and resources
+- `/public` - Static assets (images, icons, etc.)
 
 ## Adding Content
 
@@ -99,28 +102,54 @@ Add images to the `/public` folder and reference them in your components:
 
 Create new section components in `/src/components/sections` and add them to the main page in `/src/app/page.tsx`.
 
+### Navigation
+
+The site uses Next.js's `Link` component for navigation between sections. When adding new links, make sure to use:
+
+```jsx
+import Link from 'next/link';
+
+// Then in your JSX
+<Link href="/path">Link Text</Link>
+```
+
 ## Deployment
 
-The site can be deployed to various platforms:
+The site is configured to be deployed to various platforms:
 
-### Vercel (Recommended)
+### GitHub Pages (Current Method)
+
+This site is configured for GitHub Pages deployment via GitHub Actions workflow:
+
+1. Push changes to the `master` branch
+2. GitHub Actions will automatically build and deploy to GitHub Pages
+3. The site will be available at `https://<username>.github.io/stormbound-isles-nextjs`
+
+For manual deployment to GitHub Pages:
+
+```bash
+npm run build
+# The output directory will be './out'
+```
+
+### Vercel
 
 Deploy to Vercel with minimal configuration:
 
 ```bash
 npm run build
-vercel
+npx vercel
 ```
 
 ### Other Platforms
 
-Build the static site:
+Build the site:
 
 ```bash
 npm run build
 ```
 
-Deploy the contents of the `out` folder (for static hosting) or `.next` folder (for Node hosting) to your hosting provider.
+Deploy the contents of the `out` folder to your hosting provider of choice.
 
 ## Contributing
 
@@ -139,5 +168,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Next.js](https://nextjs.org/)
 - [Framer Motion](https://www.framer.com/motion/)
 - [Tailwind CSS](https://tailwindcss.com/)
-- [Geist Font](https://vercel.com/font)
-- [react-bits](https://github.com/DavidHDev/react-bits) - Used for `Squares`, `Particles`, and `Aurora` components.
+- [OGL](https://github.com/oframe/ogl) - WebGL library for particle effects
