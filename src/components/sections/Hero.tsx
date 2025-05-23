@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from 'next/link';
 import FloatingParticles from "@/components/FloatingParticles";
 
 const Hero: React.FC = () => {
@@ -34,19 +35,18 @@ const Hero: React.FC = () => {
             Five teams. Five elemental islands. Build, survive, and outsmart
             chaos in the ultimate Minecraft showdown.
           </p>
-          <div className="space-y-4 md:space-y-0 md:space-x-4 flex flex-col md:flex-row">
-            <a
+          <div className="space-y-4 md:space-y-0 md:space-x-4 flex flex-col md:flex-row">            <Link
               href="/not-found"
               className="px-8 py-4 bg-[var(--isle-ice)] text-black font-bold rounded-lg hover:bg-opacity-90 transition-all transform hover:-translate-y-1 text-center"
             >
               Play the Mod
-            </a>
-            <a
+            </Link>
+            <Link
               href="/not-found"
               className="px-8 py-4 bg-transparent border-2 border-[var(--isle-ice)] text-white font-bold rounded-lg hover:bg-[var(--isle-ice)] hover:bg-opacity-10 transition-all transform hover:-translate-y-1 text-center"
             >
               See Features
-            </a>
+            </Link>
           </div>
           {/* Updated Island List */}
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2">

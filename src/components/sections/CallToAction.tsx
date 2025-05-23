@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from 'next/link';
 
 const CallToAction: React.FC = () => {
   return (
@@ -24,19 +25,18 @@ const CallToAction: React.FC = () => {
             </p>
           </div>
 
-          <div className="w-full lg:w-1/3 flex flex-col space-y-4">
-            <a
+          <div className="w-full lg:w-1/3 flex flex-col space-y-4">            <Link
               href="/not-found"
               className="px-8 py-4 bg-[var(--isle-fire)] text-white font-bold rounded-lg hover:bg-opacity-90 transition-all transform hover:-translate-y-1 text-center"
             >
               Download Now
-            </a>
-            <a
+            </Link>
+            <Link
               href="/not-found"
               className="px-8 py-4 bg-transparent border-2 border-white/20 text-white font-bold rounded-lg hover:bg-white/10 transition-all transform hover:-translate-y-1 text-center"
             >
               Watch Gameplay
-            </a>
+            </Link>
           </div>
         </div>
       </div>
