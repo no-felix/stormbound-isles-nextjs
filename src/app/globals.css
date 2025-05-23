@@ -89,6 +89,94 @@ nav {
   border-radius: 8px;
 }
 
+/* Construction progress animation */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Coming Soon section animations */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Enhanced cursor animation */
+.animate-blink {
+  animation: blink 1s step-end infinite;
+  opacity: 1;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes pulse-1 {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.05); }
+}
+
+@keyframes pulse-2 {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.05); }
+}
+
+@keyframes pulse-3 {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.05); }
+}
+
+@keyframes pulse-4 {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.05); }
+}
+
+@keyframes pulse-5 {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.05); }
+}
+
+/* Utility animations for the Coming Soon section */
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+.animate-pulse-1 {
+  animation: pulse-1 3s ease-in-out infinite;
+}
+
+.animate-pulse-2 {
+  animation: pulse-2 3s ease-in-out infinite;
+}
+
+.animate-pulse-3 {
+  animation: pulse-3 3s ease-in-out infinite;
+}
+
+.animate-pulse-4 {
+  animation: pulse-4 3s ease-in-out infinite;
+}
+
+.animate-pulse-5 {
+  animation: pulse-5 3s ease-in-out infinite;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;

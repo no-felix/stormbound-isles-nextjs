@@ -1,24 +1,101 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Link from 'next/link';
 import FloatingParticles from "@/components/FloatingParticles";
 
 const Hero: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
-
+  const [typingText, setTypingText] = useState<string>("");
+  const [isDeleting, setIsDeleting] = useState<boolean>(false);
+  const fullText = "kinda...";
+  
   useEffect(() => {
     // Trigger animation after component mounts
     setIsVisible(true);
   }, []);
+    // Typing animation effect
+  useEffect(() => {
+    const typingSpeed = 150; // Speed of typing in ms
+    const deletingSpeed = 100; // Speed of deleting in ms
+    const pauseDuration = 5000; // Pause time when fully typed/deleted (5 seconds)
+    
+    const typeText = () => {
+      if (isDeleting) {
+        // Deleting mode
+        if (typingText.length === 0) {
+          // When text is fully deleted, pause and switch to typing mode
+          setTimeout(() => {
+            setIsDeleting(false);
+          }, pauseDuration);
+          return;
+        }
+        
+        // Delete one character
+        const timeout = setTimeout(() => {
+          setTypingText(typingText.slice(0, -1));
+        }, deletingSpeed);
+        return () => clearTimeout(timeout);
+      } else {
+        // Typing mode
+        if (typingText === fullText) {
+          // When text is fully typed, pause and switch to deleting mode
+          setTimeout(() => {
+            setIsDeleting(true);
+          }, pauseDuration);
+          return;
+        }
+        
+        // Type one more character
+        const timeout = setTimeout(() => {
+          setTypingText(fullText.slice(0, typingText.length + 1));
+        }, typingSpeed);
+        return () => clearTimeout(timeout);
+      }
+    };
+    
+    const animationTimeout = typeText();
+    return () => {
+      if (animationTimeout) {
+        animationTimeout();
+      }
+    };
+  }, [typingText, isDeleting]);
+
+  const memoizedParticles = useMemo(() => (
+    <FloatingParticles
+      count={100}
+      connectLines={true}
+    />
+  ), []);
+
+  const hexagonalGrid = useMemo(() => (
+    <div className="absolute inset-0 opacity-20">
+      {Array.from({ length: 20 }).map((_, i) => {
+        // Generate a deterministic position using a fixed seed-like approach
+        const posX = ((i * 83) % 100);
+        const posY = ((i * 47) % 100);
+        return (
+          <div 
+            key={`hexagon-element-${i * 7}`}
+            className="absolute w-32 h-32"
+            style={{
+              left: `${posX}%`,
+              top: `${posY}%`,
+              transform: 'translate(-50%, -50%) rotate(30deg)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
+            }}
+          />
+        );
+      })}
+    </div>
+  ), []); // Empty dependency array means this will only be calculated once
 
   return (
     <>
       {/* Fixed position particles that cover the entire viewport */}
-      <FloatingParticles
-        count={100}
-        connectLines={true}
-      />
+      {memoizedParticles}
 
       {/* Content container */}
       <div className="container mx-auto px-4 min-h-screen flex flex-col lg:flex-row items-center justify-center py-16 relative z-10">
@@ -77,25 +154,92 @@ const Hero: React.FC = () => {
           className={`w-full lg:w-1/2 mt-16 lg:mt-0 transition-all duration-1000 delay-300 ease-out ${
             isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
           }`}
-        >
+        >          
           <div className="relative w-full h-[450px] glass rounded-3xl overflow-hidden">
-            {" "}
-            {/* Placeholder for a hero image - replace with your actual image */}
-            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[var(--isle-fire)] via-[var(--isle-ice)] to-[var(--isle-mushroom)] opacity-50">
-              <span className="text-2xl font-bold text-white">
-                Will your team rule the elements?
-              </span>
+            {/* Animated "Coming Soon" display with interactive elements */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[var(--background)]/80 to-[var(--background)]/60 backdrop-filter backdrop-blur-sm">
+              {/* Hexagonal Grid Background */}
+              {hexagonalGrid}
+              
+              {/* Main Content with Creative Layout */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
+                {/* The "Coming Soon" title with animated typing effect */}                <div className="mb-10">
+                  <div className="text-3xl md:text-4xl font-bold relative inline-flex items-center">
+                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-[var(--isle-ice)] to-[var(--isle-crystal)]">
+                      Coming Soon
+                    </span>                    <div className="ml-2 inline-flex items-center">
+                      <span className="text-white/70 text-xl">{typingText}</span>
+                      <span className="h-6 w-1.5 ml-0.5 bg-[var(--isle-crystal)] inline-block animate-blink" style={{ boxShadow: '0 0 8px var(--isle-crystal)' }}></span>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Island Badges - Simple representation of the 5 isles */}
+                <div className="flex flex-wrap justify-center gap-4 mb-10">
+                  {[
+                    { name: "Volcano", color: "var(--isle-fire)" },
+                    { name: "Ice", color: "var(--isle-ice)" },
+                    { name: "Desert", color: "var(--isle-desert)" },
+                    { name: "Mushroom", color: "var(--isle-mushroom)" },
+                    { name: "Crystal", color: "var(--isle-crystal)" }
+                  ].map((isle, i) => (
+                    <div 
+                      key={`island-badge-${isle.name}`} 
+                      className="px-3 py-1 rounded-full flex items-center border"
+                      style={{ 
+                        borderColor: `${isle.color}33`,
+                        background: `${isle.color}15`
+                      }}
+                    >
+                      <div 
+                        className="w-2 h-2 rounded-full mr-2" 
+                        style={{ 
+                          backgroundColor: isle.color,
+                          boxShadow: `0 0 8px ${isle.color}`
+                        }}
+                      ></div>
+                      <span className="text-xs font-medium">{isle.name}</span>
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Progress Section */}
+                <div className="w-full max-w-xs">                  {/* Progress bar showing completion status */}
+                  <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden mb-6">
+                    <div 
+                      className="h-full bg-gradient-to-r from-[var(--isle-fire)] via-[var(--isle-ice)] to-[var(--isle-crystal)]"
+                      style={{ width: '8%' }}
+                    >
+                      <div className="h-full w-full bg-white/10 animate-pulse-slow"></div>
+                    </div>
+                  </div>
+                  
+                  {/* Development timeline */}                  <div className="flex items-center justify-between">
+                    <div className="text-center">
+                      <div className="text-xs uppercase text-white/50">Started</div>
+                      <div className="text-sm font-medium">Apr 2025</div>
+                    </div>
+                    <div className="text-center relative">
+                      <div className="text-xs uppercase text-white/50">Today</div>
+                      <div className="text-sm font-medium">May 2025</div>
+                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-px h-4 bg-[var(--isle-ice)]"></div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-xs uppercase text-white/50">Release</div>
+                      <div className="text-sm font-medium">Aug 2026</div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Call to action link - signup for updates */}
+                <Link 
+                  href="/not-found" 
+                  className="mt-10 px-6 py-2 bg-transparent border border-white/20 rounded-full text-sm hover:border-[var(--isle-ice)] hover:text-[var(--isle-ice)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--isle-ice)]/50"
+                >
+                  Sign up for launch notification
+                </Link>
+              </div>
             </div>
-            {/* Floating elements to create depth */}
-            <div className="absolute top-1/4 left-1/4 w-16 h-16 rounded-xl bg-[var(--isle-fire)] opacity-60 animate-pulse"></div>
-            <div
-              className="absolute bottom-1/4 right-1/3 w-20 h-20 rounded-full bg-[var(--isle-ice)] opacity-60 animate-pulse"
-              style={{ animationDelay: "1s" }}
-            ></div>
-            <div
-              className="absolute top-1/3 right-1/4 w-12 h-12 rounded-lg bg-[var(--isle-crystal)] opacity-60 animate-pulse"
-              style={{ animationDelay: "2s" }}
-            ></div>
           </div>
           {/* Game stats - Updated to reflect 5 elemental isles */}{" "}
           <div className="flex justify-around mt-8">
