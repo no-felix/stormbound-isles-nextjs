@@ -187,7 +187,7 @@ const FloatingParticles: React.FC<ParticleProps> = ({
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("resize", handleResize);
     };
-  }, [resolvedColors, count, sizeRange, speedRange, opacityRange]);
+  }, [resolvedColors, count, sizeRange, speedRange, opacityRange, connectDistance, connectLines]);
 
   return (
     <canvas
