@@ -1,7 +1,7 @@
 import React from 'react';
 import FadeIn from '../animations/FadeIn';
 import Reveal from '../animations/Reveal';
-import Particles from './Particles';
+import ParticleBackground from '@/components/ui/ParticleBackground';
 
 const features = [
 	{
@@ -52,16 +52,19 @@ export default function Features() {
 	return (
 		<section id="features" className="section-full relative overflow-hidden">
 			{/* Particles animated background */}
-			<div className="absolute inset-0 z-0 pointer-events-none">
-				<Particles
-					particleColors={['#ffffff', '#ffffff']}
-					particleCount={500}
-					particleSpread={10}
-					speed={0.3}
-					particleBaseSize={150}
-					moveParticlesOnHover={false}
-					alphaParticles={false}
-					disableRotation={true}
+			<div className="absolute inset-0 z-0 pointer-events-none">				<ParticleBackground
+					particleCount={300}
+					colors={['#ffffff', '#ffffff']}
+					minSize={2}
+					maxSize={5}
+					minOpacity={0.2}
+					maxOpacity={0.7}
+					speed={0.5}
+					showConnections={true}
+					connectionDistance={150}
+					connectionColor={'#ffffff'}
+					connectionOpacity={0.1}
+					connectionWidth={0.5}
 				/>
 			</div>
 			

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, useAnimate } from "framer-motion";
 import Footer from "@/components/layout/Footer";
 import GradientBackground from "@/components/ui/GradientBackground";
+import ParticleBackground from "@/components/ui/ParticleBackground";
 
 const FUNNY_MESSAGES = [
   "Oops! You've ventured into the void between islands.",
@@ -34,24 +35,13 @@ const SAHUR_IMAGES = [
 ];
 
 export default function NotFound() {
-  const [scope, animate] = useAnimate();
-  const [message, setMessage] = useState("");
+  const [scope, animate] = useAnimate();  const [message, setMessage] = useState("");
   const [islandRotation, setIslandRotation] = useState(0);
   const [isCompassAnimating, setIsCompassAnimating] = useState(false);
-  const [dots, setDots] = useState<Array<{id: string, x: number, y: number, duration: number, delay: number}>>([]);
   const [sahur, setSahur] = useState<{src: string; x: number; y: number; rotate: number; scale: number} | null>(null);
   
-  // Generate random dots and Sahur image only on the client side
+  // Generate Sahur image only on the client side
   useEffect(() => {
-    const newDots = Array.from({ length: 50 }).map((_, i) => ({
-      id: `dot-${i}-${Math.random().toString(36).substring(2, 9)}`,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      duration: 3 + Math.random() * 2,
-      delay: Math.random() * 5
-    }));
-    setDots(newDots);
-
     // Setup Sahur
     const randomSahurSrc = SAHUR_IMAGES[Math.floor(Math.random() * SAHUR_IMAGES.length)];
     setSahur({
@@ -104,29 +94,23 @@ export default function NotFound() {
             colorTo="rgba(179,108,255,0.02)"
             className="w-full h-full"
           />
-          
-          {/* Animated elements in the background */}
+            {/* Animated elements in the background */}
           <div className="absolute inset-0 overflow-hidden z-1">
-            {/* Randomly positioned dots */}
-            {dots.map((dot) => (
-              <motion.div
-                key={dot.id}
-                className="absolute w-1 h-1 rounded-full bg-white/20"
-                style={{
-                  left: `${dot.x}%`,
-                  top: `${dot.y}%`,
-                }}
-                animate={{
-                  opacity: [0.1, 0.5, 0.1],
-                  scale: [1, 1.5, 1],
-                }}
-                transition={{
-                  duration: dot.duration,
-                  repeat: Infinity,
-                  delay: dot.delay,
-                }}
-              />
-            ))}
+            {/* Particle background */}
+            <ParticleBackground 
+              particleCount={50}
+              colors={['#ffffff', '#5ad1ff', '#b36cff']}
+              minSize={1}
+              maxSize={2}
+              minOpacity={0.1}
+              maxOpacity={0.3}
+              speed={0.5}
+              showConnections={true}
+              connectionDistance={120}
+              connectionColor={'#5ad1ff'}
+              connectionOpacity={0.15}
+              connectionWidth={0.5}
+            />
             
             {/* Floating islands */}
             {ISLAND_EMOJIS.map((emoji, i) => {

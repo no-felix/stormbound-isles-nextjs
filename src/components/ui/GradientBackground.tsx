@@ -20,7 +20,7 @@ export default function GradientBackground({
   colorTo = 'transparent',
   className = '',
   animate = true
-}: GradientBackgroundProps) {
+}: Readonly<GradientBackgroundProps>) {
   
   // Instead of dynamic classes, use inline styles for gradients
   const gradientStyle = {
