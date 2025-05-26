@@ -18,15 +18,35 @@ const EMOJIS = [
 
 const MESSAGES = [
   "Lost in the Isles?",
-  "Swept Away by Chaos!",
-  "Oops! This page fell into a volcano.",
-  "Frozen in the void. Page not found.",
-  "A mushroom ate this page.",
-  "Blown away by a magical storm!",
-  "Crystallized into nothingness.",
-  "Deserted! This page wandered off.",
-  "Elemental mishap!",
-  "You found a secret island... but not this page.",
+  "Swept away by elemental chaos!",
+  "Oops! This page fell into a volcano crater.",
+  "Frozen solid in the ice biome.",
+  "A giant mushroom blocked this URL!",
+  "Blown away by a desert sandstorm!",
+  "Crystallized by magical energy.",
+  "Lost in the scorching desert dunes.",
+  "A lava flow melted this page away!",
+  "Buried under an avalanche of snow blocks.",
+  "The crystal caves are too confusing...",
+  "Mushroom spores clouded your vision.",
+  "A TNT explosion destroyed this link!",
+  "The PvP arena is closed for maintenance.",
+  "Your team got eliminated early.",
+  "Caught in a disaster event!",
+  "The jury phase vote went wrong.",
+  "Respawned at the wrong coordinates.",
+  "Your base got raided while AFK.",
+  "Fell into the void between islands.",
+  "A griefer broke this page block by block.",
+  "The server admin moved this content.",
+  "Your inventory was too full to load this.",
+  "A Creeper blew up the page cache.",
+  "The mod crashed during loading.",
+  "Connection timed out to this dimension.",
+  "This chunk failed to generate properly.",
+  "A redstone contraption went haywire.",
+  "The Nether portal led to the wrong place.",
+  "Your pickaxe broke before mining this data.",
 ];
 
 function getRandom<T>(arr: T[]): T {
@@ -62,20 +82,17 @@ export default function NotFound() {
         </h1>
         <h2 className="text-2xl font-bold mb-2 italic text-gray-300">
           {message}
-        </h2>
-        <p className="mb-8 text-lg text-center max-w-md opacity-80">
-          Looks like you wandered off the map.
-          <br />
-          <span className="text-[var(--isle-mushroom)] font-semibold">
-            Tip:
+        </h2>        <p className="mb-8 text-lg text-center max-w-md opacity-80">
+          Looks like you wandered off the server.
+          <br />          <span className="text-[var(--isle-mushroom)] font-semibold">
+            Pro Tip:
           </span>{" "}
-          Even the best explorers get lost sometimes!
-        </p>
-        <Link
+          Even the best Minecraft players get lost sometimes!
+        </p>        <Link
           href="/"
           className="px-8 py-4 bg-[var(--isle-crystal)] text-black font-bold rounded-lg shadow-lg hover:bg-[var(--isle-fire)] transition-colors text-lg"
         >
-          Return to the Isles
+          Return to Base
         </Link>
       </div>
       <style>{`
