@@ -90,33 +90,31 @@ export default function NotFound() {
           50% {
             transform: translateY(-24px);
           }
-        }
-        .subtle-glitch {
+        }        .subtle-glitch {
           position: relative;
-          animation: subtle-glitch-anim 1.2s infinite steps(2, end);
-        }
-        @keyframes subtle-glitch-anim {
+          animation: subtle-glitch-anim 2.5s infinite steps(2, end);
+        }        @keyframes subtle-glitch-anim {
           0% {
             text-shadow: none;
             opacity: 1;
             transform: translateX(0);
           }
-          10% {
+          4.8% {
             text-shadow: 2px 0 #fff, -2px 0 #fff;
             opacity: 0.85;
             transform: translateX(-1px);
           }
-          20% {
+          9.6% {
             text-shadow: -2px 0 #fff, 2px 0 #fff;
             opacity: 0.9;
             transform: translateX(1px);
           }
-          30% {
+          14.4% {
             text-shadow: 1px 0 #fff, -1px 0 #fff;
             opacity: 0.95;
             transform: translateX(-0.5px);
           }
-          40% {
+          19.2% {
             text-shadow: none;
             opacity: 1;
             transform: translateX(0);
