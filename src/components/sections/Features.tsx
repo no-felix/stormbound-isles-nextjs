@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import FloatingParticles from "@/components/FloatingParticles";
 
 interface FeatureCardProps {
   title: string;
@@ -220,33 +221,43 @@ const Features: React.FC = () => {
       elementType: "fire" as const,
     },
   ];
-
   return (
-    <div className="container mx-auto px-4 py-24">
-      <div className="text-center max-w-3xl mx-auto mb-16">
-        <h2 className="text-4xl font-bold mb-6 gradient-text">
-          What Makes Stormbound Isles Unique?
-        </h2>
-        <p className="text-xl text-gray-300">
-          A new era of Minecraft competition—where creativity, teamwork, and
-          chaos collide.
-        </p>
+    <>
+      {/* Ice-themed floating particles for Features section */}
+      <div className="absolute inset-0 pointer-events-none">
+        <FloatingParticles
+          count={30}
+          connectLines={false}
+          colors={["var(--isle-ice)"]}
+          opacityRange={{ min: 0.1, max: 0.3 }}
+        />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {" "}
-        {features.map((feature) => (
-          <FeatureCard
-            key={feature.title}
-            title={feature.title}
-            description={feature.description}
-            icon={feature.icon}
-            delay={feature.delay}
-            elementType={feature.elementType}
-          />
-        ))}
+      {/* Content container */}
+      <div className="container mx-auto px-4 py-24 relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-4xl font-bold mb-6 gradient-text">
+            What Makes Stormbound Isles Unique?
+          </h2>
+          <p className="text-xl text-gray-300">
+            A new era of Minecraft competition—where creativity, teamwork, and
+            chaos collide.
+          </p>
+        </div>{" "}
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((feature) => (
+            <FeatureCard
+              key={feature.title}
+              title={feature.title}
+              description={feature.description}
+              icon={feature.icon}
+              delay={feature.delay}
+              elementType={feature.elementType}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

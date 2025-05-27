@@ -61,9 +61,14 @@ const Hero: React.FC = () => {
       }
     };
   }, [typingText, isDeleting]);
-
   const memoizedParticles = useMemo(
-    () => <FloatingParticles count={100} connectLines={true} />,
+    () => (
+      <FloatingParticles
+        count={100}
+        connectLines={true}
+        colors={["var(--isle-fire)"]}
+      />
+    ),
     []
   );
 

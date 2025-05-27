@@ -83,11 +83,14 @@ const FloatingParticles: React.FC<ParticleProps> = ({
     if (!ctx) return;
 
     let animationFrameId: number;
-
     const initializeParticles = () => {
       particlesArray.current = [];
-      const canvasWidth = window.innerWidth;
-      const canvasHeight = window.innerHeight;
+      // Use the parent container size instead of window size
+      const parent = canvas.parentElement;
+      if (!parent) return;
+
+      const canvasWidth = parent.offsetWidth;
+      const canvasHeight = parent.offsetHeight;
       canvas.width = canvasWidth;
       canvas.height = canvasHeight;
 
@@ -109,7 +112,6 @@ const FloatingParticles: React.FC<ParticleProps> = ({
         });
       }
     };
-
 
     const updateAndDrawParticles = () => {
       const canvasWidth = canvas.width;
@@ -187,12 +189,19 @@ const FloatingParticles: React.FC<ParticleProps> = ({
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("resize", handleResize);
     };
-  }, [resolvedColors, count, sizeRange, speedRange, opacityRange, connectDistance, connectLines]);
-
+  }, [
+    resolvedColors,
+    count,
+    sizeRange,
+    speedRange,
+    opacityRange,
+    connectDistance,
+    connectLines,
+  ]);
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-screen h-screen pointer-events-none"
+      className="absolute top-0 left-0 w-full h-full pointer-events-none"
       style={{ zIndex: 1 }}
       aria-hidden="true"
       tabIndex={-1}
