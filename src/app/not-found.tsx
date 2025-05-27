@@ -110,7 +110,7 @@ export default function NotFound() {
     Array<{ id: number; x: number; delay: number; drift: number }>
   >([]);
 
-  const { version } = getVersionInfo();
+  const { version, buildDate } = getVersionInfo();
 
   useEffect(() => {
     setMounted(true);
@@ -221,9 +221,11 @@ export default function NotFound() {
           Return to Base{" "}
         </Link>
       </div>
-      {/* Debug Version Info */}
+      {/* Debug Version Info */}{" "}
       <div className="fixed bottom-4 right-4 text-xs text-gray-600 bg-black/20 backdrop-blur-sm px-2 py-1 rounded border border-gray-700">
-        <span className="font-mono">build: {formatVersion(version)}</span>
+        <span className="font-mono">
+          build: {formatVersion(version)} ({buildDate})
+        </span>
       </div>
       <style>{`
         .animate-bounce-slow {
