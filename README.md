@@ -7,7 +7,7 @@
 [![Next.js](https://img.shields.io/badge/Next.js-15.3.2-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?style=for-the-badge&logo=typescript)](https://typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.x-06B6D4?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-[![React](https://img.shields.io/badge/React-19.0.0-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
+[![React](https://img.shields.io/badge/React-19.1.0-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 [🎮 Live Demo](https://no-felix.github.io/stormbound-isles-nextjs/) • [ Quick Start](#-quick-start) • [🤝 Contributing](#-contributing)
@@ -65,10 +65,10 @@ This project leverages cutting-edge technologies for optimal performance and dev
 
 ### **Frontend**
 - **[Next.js 15.3.2](https://nextjs.org/)** - React framework with App Router
-- **[React 19.0.0](https://reactjs.org/)** - Latest React with new features
+- **[React 19.1.0](https://reactjs.org/)** - Latest React with new features
 - **[TypeScript 5.x](https://typescriptlang.org/)** - Type-safe JavaScript superset
 - **[Tailwind CSS 4.x](https://tailwindcss.com/)** - Latest utility-first CSS framework
-- **[Framer Motion 12.11.4](https://framer.com/motion/)** - Production-ready motion library
+- **[Framer Motion 12.15.0](https://framer.com/motion/)** - Production-ready motion library
 
 ### **Graphics & Animation**
 - **[OGL 1.0.11](https://github.com/oframe/ogl)** - Lightweight WebGL library for particles
