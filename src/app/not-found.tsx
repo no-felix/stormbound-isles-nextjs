@@ -102,8 +102,9 @@ export default function NotFound() {
   const [emojiObj, setEmojiObj] = useState(EMOJIS[0]);
   const [message, setMessage] = useState(MESSAGES[0]);
   const [lostTime, setLostTime] = useState(0);
-  const [showAchievement, setShowAchievement] = useState(false);
-  const [hideAchievement, setHideAchievement] = useState(false);
+  const [achievementState, setAchievementState] = useState<
+    "hidden" | "showing" | "hiding"
+  >("hidden");
   const [particles, setParticles] = useState<
     Array<{ id: number; x: number; delay: number; drift: number }>
   >([]);
@@ -112,13 +113,10 @@ export default function NotFound() {
     setMounted(true);
     setEmojiObj(getRandom(EMOJIS));
     setMessage(getRandomMessage());
-
-    // Show achievement after 2 seconds
     const achievementTimer = setTimeout(() => {
-      setShowAchievement(true);
+      setAchievementState("showing");
       setTimeout(() => {
-        setHideAchievement(true);
-        setTimeout(() => setShowAchievement(false), 500);
+        setAchievementState("hiding");
       }, 4000);
     }, 2000);
 
@@ -169,12 +167,14 @@ export default function NotFound() {
         >
           {emojiObj.particle}
         </div>
-      ))}
+      ))}{" "}
       {/* Achievement Toast */}
-      {showAchievement && (
+      {achievementState !== "hidden" && (
         <div
           className={`fixed top-4 right-4 bg-yellow-600 text-black px-6 py-3 rounded-lg shadow-lg z-50 ${
-            hideAchievement ? "animate-slide-out" : "animate-slide-in"
+            achievementState === "hiding"
+              ? "animate-slide-out"
+              : "animate-slide-in"
           }`}
         >
           <div className="flex items-center gap-2">
@@ -265,9 +265,8 @@ export default function NotFound() {
             transform: translateX(0);
           }
         }
-        
-        .animate-slide-in {
-          animation: slideIn 0.5s ease-out;
+          .animate-slide-in {
+          animation: slideIn 0.3s ease-out;
         }
         @keyframes slideIn {
           from {
@@ -279,9 +278,8 @@ export default function NotFound() {
             opacity: 1;
           }
         }
-        
-        .animate-slide-out {
-          animation: slideOut 0.5s ease-in;
+          .animate-slide-out {
+          animation: slideOut 0.3s ease-in forwards;
         }
         @keyframes slideOut {
           from {
