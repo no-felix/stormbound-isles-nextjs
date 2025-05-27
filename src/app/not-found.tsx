@@ -103,6 +103,7 @@ export default function NotFound() {
   const [message, setMessage] = useState(MESSAGES[0]);
   const [lostTime, setLostTime] = useState(0);
   const [showAchievement, setShowAchievement] = useState(false);
+  const [hideAchievement, setHideAchievement] = useState(false);
   const [particles, setParticles] = useState<
     Array<{ id: number; x: number; delay: number; drift: number }>
   >([]);
@@ -115,7 +116,10 @@ export default function NotFound() {
     // Show achievement after 2 seconds
     const achievementTimer = setTimeout(() => {
       setShowAchievement(true);
-      setTimeout(() => setShowAchievement(false), 4000);
+      setTimeout(() => {
+        setHideAchievement(true);
+        setTimeout(() => setShowAchievement(false), 500);
+      }, 4000);
     }, 2000);
 
     return () => clearTimeout(achievementTimer);
@@ -168,7 +172,11 @@ export default function NotFound() {
       ))}
       {/* Achievement Toast */}
       {showAchievement && (
-        <div className="fixed top-4 right-4 bg-yellow-600 text-black px-6 py-3 rounded-lg shadow-lg z-50 animate-slide-in">
+        <div
+          className={`fixed top-4 right-4 bg-yellow-600 text-black px-6 py-3 rounded-lg shadow-lg z-50 ${
+            hideAchievement ? "animate-slide-out" : "animate-slide-in"
+          }`}
+        >
           <div className="flex items-center gap-2">
             <span className="text-lg">🏆</span>
             <div>
@@ -270,7 +278,21 @@ export default function NotFound() {
             transform: translateX(0);
             opacity: 1;
           }
-        }        .particle-float {
+        }
+        
+        .animate-slide-out {
+          animation: slideOut 0.5s ease-in;
+        }
+        @keyframes slideOut {
+          from {
+            transform: translateX(0);
+            opacity: 1;
+          }
+          to {
+            transform: translateX(100%);
+            opacity: 0;
+          }
+        }.particle-float {
           animation: particleRise 6s linear infinite;
           bottom: -10%;
         }        @keyframes particleRise {
