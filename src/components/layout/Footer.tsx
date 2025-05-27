@@ -2,8 +2,11 @@
 
 import React from "react";
 import Link from "next/link";
+import { getVersionInfo, formatVersion } from "../../lib/version";
 
 const Footer: React.FC = () => {
+  const { version } = getVersionInfo();
+
   return (
     <footer className="bg-[#0f1119] py-16">
       <div className="container mx-auto px-4">
@@ -183,10 +186,13 @@ const Footer: React.FC = () => {
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm">
             © {new Date().getFullYear()} Stormbound Isles. All rights reserved.
-          </p>
-          <p className="text-gray-500 text-sm mt-4 md:mt-0">
+          </p>{" "}
+          <p className="text-gray-500 text-sm mt-4 md:mt-0 flex items-center gap-3">
             Made with <span className="text-[var(--isle-fire)]">♥</span> in the
-            digital realm
+            digital realm{" "}
+            <span className="text-gray-600 text-xs bg-gray-800 px-2 py-1 rounded-full">
+              {formatVersion(version)}
+            </span>
           </p>
         </div>
 

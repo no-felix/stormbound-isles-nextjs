@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { getVersionInfo, formatVersion } from "../lib/version";
 
 const EMOJIS = [
   { emoji: "🌋", label: "Volcano", bgColor: "#ff5a36", particle: "🔥" },
@@ -104,10 +105,11 @@ export default function NotFound() {
   const [lostTime, setLostTime] = useState(0);
   const [achievementState, setAchievementState] = useState<
     "hidden" | "showing" | "hiding"
-  >("hidden");
-  const [particles, setParticles] = useState<
+  >("hidden");  const [particles, setParticles] = useState<
     Array<{ id: number; x: number; delay: number; drift: number }>
   >([]);
+
+  const { version } = getVersionInfo();
 
   useEffect(() => {
     setMounted(true);
@@ -215,9 +217,14 @@ export default function NotFound() {
           href="/"
           className="px-8 py-4 bg-[var(--isle-crystal)] text-black font-bold rounded-lg shadow-lg hover:bg-[var(--isle-fire)] transition-colors text-lg"
         >
-          Return to Base
-        </Link>
-      </div>{" "}
+          Return to Base        </Link>
+      </div>
+
+      {/* Debug Version Info */}
+      <div className="fixed bottom-4 right-4 text-xs text-gray-600 bg-black/20 backdrop-blur-sm px-2 py-1 rounded border border-gray-700">
+        <span className="font-mono">build: {formatVersion(version)}</span>
+      </div>
+
       <style>{`
         .animate-bounce-slow {
           animation: bounce 2.5s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
