@@ -317,7 +317,7 @@ const Islands: React.FC = () => {
                     <span
                       className="w-3 h-3 rounded-full mr-3"
                       style={{ backgroundColor: activeIslandData.color }}
-                    />
+                    />{" "}
                     Key Locations
                   </h4>
                   <div className="grid grid-cols-2 gap-4">
