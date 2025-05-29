@@ -42,17 +42,17 @@ const CallToAction: React.FC = () => {
             <div className="w-full lg:w-1/3 flex flex-col space-y-4">
               {" "}
               <Link
-                href="/not-found"
+                href="https://github.com/no-felix/stormbound-isles/releases"
                 className="px-8 py-4 bg-[var(--isle-fire)] text-white font-bold rounded-lg hover:bg-opacity-90 transition-all transform hover:-translate-y-1 text-center"
               >
-                Download Now
+                Download Mod
               </Link>
               <Link
-                href="/not-found"
+                href="video"
                 className="px-8 py-4 bg-transparent border-2 border-white/20 text-white font-bold rounded-lg hover:bg-white/10 transition-all transform hover:-translate-y-1 text-center"
               >
                 Watch Gameplay
-              </Link>{" "}
+              </Link>
             </div>
           </div>
         </div>

@@ -356,7 +356,7 @@ const Islands: React.FC = () => {
                   transition={{ duration: 0.4, delay: 0.6 }}
                 >
                   <Link
-                    href="/not-found"
+                    href={`/islands/${activeIslandData.id}`}
                     className="group relative px-6 py-3 rounded-lg font-bold transition-all duration-300 text-center block overflow-hidden"
                     style={{
                       backgroundColor: `${activeIslandData.color}20`,

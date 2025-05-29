@@ -122,13 +122,13 @@ const Hero: React.FC = () => {
           <div className="space-y-4 md:space-y-0 md:space-x-4 flex flex-col md:flex-row">
             {" "}
             <Link
-              href="/not-found"
+              href="/download"
               className="px-8 py-4 bg-[var(--isle-ice)] text-black font-bold rounded-lg hover:bg-opacity-90 transition-all transform hover:-translate-y-1 text-center"
             >
               Play the Mod
             </Link>
             <Link
-              href="/not-found"
+              href="/features"
               className="px-8 py-4 bg-transparent border-2 border-[var(--isle-ice)] text-white font-bold rounded-lg hover:bg-[var(--isle-ice)] hover:bg-opacity-10 transition-all transform hover:-translate-y-1 text-center"
             >
               See Features
@@ -254,7 +254,7 @@ const Hero: React.FC = () => {
                 </div>
                 {/* Call to action link - signup for updates */}
                 <Link
-                  href="/not-found"
+                  href="/signup"
                   className="mt-10 px-6 py-2 bg-transparent border border-white/20 rounded-full text-sm hover:border-[var(--isle-ice)] hover:text-[var(--isle-ice)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--isle-ice)]/50"
                 >
                   Sign up for launch notification
