@@ -5,22 +5,30 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Layout from "@/components/layout/Layout";
 import FloatingParticles from "@/components/FloatingParticles";
+import { useGitHubData } from "@/hooks/useGitHubData";
 
 export default function DeveloperHubPage() {
   const [isVisible, setIsVisible] = useState<boolean>(false);
+  const {
+    data: githubData,
+    loading: githubLoading,
+    error: githubError,
+  } = useGitHubData();
 
   useEffect(() => {
     // Trigger animation after component mounts
     setIsVisible(true);
   }, []);
 
-  // Development stats - replace with live GitHub API data
+  // live GitHub data with static development stats
   const devStats = {
-    totalCommits: 50,
-    lastCommit: "2 days ago",
-    openIssues: 1,
-    currentPhase: "Core Systems Complete",
-    progressPercent: 45,
+    totalCommits: githubData?.totalCommits ?? 50,
+    lastCommit: githubData?.lastCommit ?? "Loading...",
+    openIssues: githubData?.openIssues ?? 1,
+    stars: githubData?.stars ?? 0,
+    forks: githubData?.forks ?? 0,
+    currentPhase: "Core Systems",
+    progressPercent: 80,
     nextMilestone: "Disaster System v1.0",
   };
 
@@ -84,13 +92,24 @@ export default function DeveloperHubPage() {
                     aria-hidden="true"
                   ></div>
                   <span className="text-[var(--isle-crystal)] font-semibold text-base sm:text-lg">
-                    Development Active
+                    {githubLoading
+                      ? "Fetching Status..."
+                      : "Development Active"}
                   </span>
                   <div
                     className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[var(--isle-crystal)] animate-pulse"
                     aria-hidden="true"
                   ></div>
                 </div>
+
+                {/* GitHub Error Display */}
+                {githubError && (
+                  <div className="text-center mb-4 p-3 bg-red-900/20 border border-red-500/30 rounded-lg">
+                    <p className="text-red-300 text-sm">
+                      ⚠️ Unable to fetch live GitHub data: {githubError}
+                    </p>
+                  </div>
+                )}
 
                 <div className="text-center mb-6 sm:mb-8">
                   <h2
@@ -105,7 +124,7 @@ export default function DeveloperHubPage() {
                   </p>
                 </div>
 
-                {/* Development Stats Grid */}
+                {/* Enhanced Development Stats Grid */}
                 <fieldset className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
                   <legend className="sr-only">Development statistics</legend>
                   <div className="text-center p-3 sm:p-4 bg-slate-800/30 rounded-lg">
@@ -113,7 +132,7 @@ export default function DeveloperHubPage() {
                       className="text-xl sm:text-2xl font-bold text-[var(--isle-fire)]"
                       aria-label={`${devStats.totalCommits} commits`}
                     >
-                      {devStats.totalCommits}
+                      {githubLoading ? "..." : devStats.totalCommits}
                     </div>
                     <div className="text-xs sm:text-sm text-gray-400">
                       Commits
@@ -122,12 +141,12 @@ export default function DeveloperHubPage() {
                   <div className="text-center p-3 sm:p-4 bg-slate-800/30 rounded-lg">
                     <div
                       className="text-xl sm:text-2xl font-bold text-[var(--isle-crystal)]"
-                      aria-label={`${devStats.progressPercent} percent complete`}
+                      aria-label={`${devStats.stars} stars`}
                     >
-                      {devStats.progressPercent}%
+                      {githubLoading ? "..." : devStats.stars}
                     </div>
                     <div className="text-xs sm:text-sm text-gray-400">
-                      Phase Progress
+                      Stars
                     </div>
                   </div>
                   <div className="text-center p-3 sm:p-4 bg-slate-800/30 rounded-lg">
@@ -135,7 +154,7 @@ export default function DeveloperHubPage() {
                       className="text-xl sm:text-2xl font-bold text-[var(--isle-ice)]"
                       aria-label={`${devStats.openIssues} open issues`}
                     >
-                      {devStats.openIssues}
+                      {githubLoading ? "..." : devStats.openIssues}
                     </div>
                     <div className="text-xs sm:text-sm text-gray-400">
                       Issues
@@ -143,10 +162,10 @@ export default function DeveloperHubPage() {
                   </div>
                   <div className="text-center p-3 sm:p-4 bg-slate-800/30 rounded-lg">
                     <div className="text-xl sm:text-2xl font-bold text-[var(--isle-desert)]">
-                      Active
+                      {githubLoading ? "..." : devStats.forks}
                     </div>
                     <div className="text-xs sm:text-sm text-gray-400">
-                      Status
+                      Forks
                     </div>
                   </div>
                 </fieldset>
@@ -160,7 +179,7 @@ export default function DeveloperHubPage() {
                     max={100}
                     aria-label={`Development progress: ${devStats.progressPercent}% complete`}
                   />
-                  
+
                   {/* Visual progress bar */}
                   <div className="w-full h-2 sm:h-3 bg-slate-800/60 rounded-full overflow-hidden">
                     {/* Animated progress fill */}
@@ -183,6 +202,44 @@ export default function DeveloperHubPage() {
                     <span>Phase Complete</span>
                   </div>
                 </div>
+
+                {/* Recent Commits Section */}
+                {githubData?.recentCommits &&
+                  githubData.recentCommits.length > 0 && (
+                    <div className="mt-6 p-4 bg-slate-800/30 rounded-lg">
+                      <h4 className="text-sm font-semibold text-white mb-3 flex items-center gap-2">
+                        <span
+                          className="text-[var(--isle-crystal)]"
+                          aria-hidden="true"
+                        >
+                          📝
+                        </span>
+                        Recent Commits
+                      </h4>
+                      <div className="space-y-2 max-h-32 overflow-y-auto">
+                        {githubData.recentCommits.slice(0, 3).map((commit) => (
+                          <div
+                            key={commit.sha}
+                            className="flex items-start gap-2 text-xs"
+                          >
+                            <span className="text-[var(--isle-ice)] mt-0.5">
+                              •
+                            </span>
+                            <div className="min-w-0 flex-1">
+                              <p className="text-gray-300 truncate">
+                                {commit.commit.message}
+                              </p>
+                              <p className="text-gray-500 text-xs">
+                                {new Date(
+                                  commit.commit.author.date
+                                ).toLocaleDateString()}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
               </div>
             </motion.section>
 
@@ -232,7 +289,12 @@ export default function DeveloperHubPage() {
 
                 <fieldset className="space-y-2 sm:space-y-3">
                   <legend className="sr-only">GitHub repository links</legend>
-                  <div className="flex items-center gap-2 sm:gap-3 text-gray-300 p-2 sm:p-3 bg-slate-800/30 rounded-lg group-hover:bg-slate-700/40 transition-colors min-w-0">
+                  <Link
+                    href="https://github.com/no-felix/stormbound-isles"
+                    className="flex items-center gap-2 sm:gap-3 text-gray-300 p-2 sm:p-3 bg-slate-800/30 rounded-lg group-hover:bg-slate-700/40 transition-colors min-w-0 hover:text-white"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <span
                       className="text-[var(--isle-crystal)] text-sm sm:text-base md:text-lg flex-shrink-0"
                       aria-hidden="true"
@@ -243,10 +305,15 @@ export default function DeveloperHubPage() {
                       Star & Watch Repository
                     </span>
                     <span className="px-2 py-1 bg-[var(--isle-crystal)]/20 text-[var(--isle-crystal)] text-xs rounded-full flex-shrink-0">
-                      GitHub
+                      {githubLoading ? "..." : `${devStats.stars} stars`}
                     </span>
-                  </div>
-                  <div className="flex items-center gap-2 sm:gap-3 text-gray-300 p-2 sm:p-3 bg-slate-800/30 rounded-lg group-hover:bg-slate-700/40 transition-colors min-w-0">
+                  </Link>
+                  <Link
+                    href="https://github.com/no-felix/stormbound-isles/commits"
+                    className="flex items-center gap-2 sm:gap-3 text-gray-300 p-2 sm:p-3 bg-slate-800/30 rounded-lg group-hover:bg-slate-700/40 transition-colors min-w-0 hover:text-white"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <span
                       className="text-[var(--isle-ice)] text-sm sm:text-base md:text-lg flex-shrink-0"
                       aria-hidden="true"
@@ -259,8 +326,13 @@ export default function DeveloperHubPage() {
                     <span className="px-2 py-1 bg-[var(--isle-ice)]/20 text-[var(--isle-ice)] text-xs rounded-full flex-shrink-0">
                       Live
                     </span>
-                  </div>
-                  <div className="flex items-center gap-2 sm:gap-3 text-gray-300 p-2 sm:p-3 bg-slate-800/30 rounded-lg group-hover:bg-slate-700/40 transition-colors min-w-0">
+                  </Link>
+                  <Link
+                    href="https://github.com/no-felix/stormbound-isles/issues"
+                    className="flex items-center gap-2 sm:gap-3 text-gray-300 p-2 sm:p-3 bg-slate-800/30 rounded-lg group-hover:bg-slate-700/40 transition-colors min-w-0 hover:text-white"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <span
                       className="text-[var(--isle-fire)] text-sm sm:text-base md:text-lg flex-shrink-0"
                       aria-hidden="true"
@@ -271,9 +343,9 @@ export default function DeveloperHubPage() {
                       Report Issues & Suggestions
                     </span>
                     <span className="px-2 py-1 bg-[var(--isle-fire)]/20 text-[var(--isle-fire)] text-xs rounded-full flex-shrink-0">
-                      Help
+                      {githubLoading ? "..." : `${devStats.openIssues} open`}
                     </span>
-                  </div>
+                  </Link>
                 </fieldset>
               </motion.section>
 
