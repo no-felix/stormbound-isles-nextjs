@@ -19,7 +19,7 @@ const Islands: React.FC = () => {
   const islands: IslandData[] = [
     {
       id: "volcano",
-      name: "Volcano Island",
+      name: "Pyrothar",
       description:
         "A fiery landscape dominated by active volcanoes and rivers of molten lava. Creatures of flame and rock thrive in the intense heat.",
       color: "var(--isle-fire)",
@@ -33,7 +33,7 @@ const Islands: React.FC = () => {
     },
     {
       id: "ice",
-      name: "Ice Island",
+      name: "Frostreign",
       description:
         "A realm of perpetual frost and towering glaciers. Ancient secrets are frozen within its icy depths, guarded by formidable frost beings.",
       color: "var(--isle-ice)",
@@ -47,7 +47,7 @@ const Islands: React.FC = () => {
     },
     {
       id: "desert",
-      name: "Desert Island",
+      name: "Sahrakir",
       description:
         "Vast sun-scorched dunes stretch as far as the eye can see. Hidden oases and ancient ruins hold both peril and promise.",
       color: "var(--isle-desert)",
@@ -60,31 +60,19 @@ const Islands: React.FC = () => {
       ],
     },
     {
-      id: "mushroom",
-      name: "Mushroom Island",
+      id: "auralis",
+      name: "Auralis",
       description:
-        "A bizarre and bioluminescent world of giant fungi and strange spores. The air hums with an otherworldly energy.",
+        "A mystical realm where massive energy-infused crystals grow alongside bioluminescent fungi, creating a surreal landscape that pulses with otherworldly power.",
       color: "var(--isle-mushroom)",
       emoji: "🍄",
       features: [
-        "Giant Mushrooms",
+        "Crystal-Infused Mushrooms",
         "Bioluminescent Flora",
-        "Spore Clouds",
-        "Fungal Creatures",
-      ],
-    },
-    {
-      id: "crystal",
-      name: "Crystal Island",
-      description:
-        "A land where massive, energy-infused crystals jut from the earth, creating a dazzling and dangerous environment.",
-      color: "var(--isle-crystal)",
-      emoji: "💎",
-      features: [
-        "Towering Crystals",
         "Energy Conduits",
-        "Crystalline Golems",
-        "Refracted Light Puzzles",
+        "Crystalline Spores",
+        "Fungal Golems",
+        "Living Light Puzzles",
       ],
     },
   ];
@@ -104,7 +92,6 @@ const Islands: React.FC = () => {
             "var(--isle-ice)",
             "var(--isle-desert)",
             "var(--isle-mushroom)",
-            "var(--isle-crystal)",
           ]}
           connectDistance={80}
           opacityRange={{ min: 0.1, max: 0.4 }}
@@ -136,7 +123,7 @@ const Islands: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl font-bold mb-6 gradient-text">
-            The Five Elemental Islands
+            The Four Elemental Islands
           </h2>
           <p className="text-xl text-gray-300">
             Explore the diverse and magical realms that make up the Stormbound

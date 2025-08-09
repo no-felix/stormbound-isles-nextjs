@@ -116,7 +116,7 @@ const Hero: React.FC = () => {
             Stormbound Isles
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-lg">
-            Five teams. Five elemental islands. Build, survive, and outsmart
+            Four teams. Four elemental islands. Build, survive, and outsmart
             chaos in the ultimate Minecraft showdown.
           </p>
           <div className="space-y-4 md:space-y-0 md:space-x-4 flex flex-col md:flex-row">
@@ -138,23 +138,19 @@ const Hero: React.FC = () => {
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2">
             <div className="flex items-center">
               <div className="w-2 h-2 rounded-full bg-[var(--isle-fire)]"></div>
-              <span className="ml-2">Volcano</span>
+              <span className="ml-2">Pyrothar</span>
             </div>
             <div className="flex items-center">
               <div className="w-2 h-2 rounded-full bg-[var(--isle-ice)]"></div>
-              <span className="ml-2">Ice</span>
+              <span className="ml-2">Frostreign</span>
             </div>
             <div className="flex items-center">
               <div className="w-2 h-2 rounded-full bg-[var(--isle-desert)]"></div>
-              <span className="ml-2">Desert</span>
+              <span className="ml-2">Sahrakir</span>
             </div>
             <div className="flex items-center">
               <div className="w-2 h-2 rounded-full bg-[var(--isle-mushroom)]"></div>
-              <span className="ml-2">Mushroom</span>
-            </div>
-            <div className="flex items-center">
-              <div className="w-2 h-2 rounded-full bg-[var(--isle-crystal)]"></div>
-              <span className="ml-2">Crystal</span>
+              <span className="ml-2">Auralis</span>
             </div>
           </div>
         </div>
@@ -192,11 +188,10 @@ const Hero: React.FC = () => {
                 {/* Island Badges - Simple representation of the 5 isles */}
                 <div className="flex flex-wrap justify-center gap-4 mb-10">
                   {[
-                    { name: "Volcano", color: "var(--isle-fire)" },
-                    { name: "Ice", color: "var(--isle-ice)" },
-                    { name: "Desert", color: "var(--isle-desert)" },
-                    { name: "Mushroom", color: "var(--isle-mushroom)" },
-                    { name: "Crystal", color: "var(--isle-crystal)" },
+                    { name: "Pyrothar", color: "var(--isle-fire)" },
+                    { name: "Frostreign", color: "var(--isle-ice)" },
+                    { name: "Sahrakir", color: "var(--isle-desert)" },
+                    { name: "Auralis", color: "var(--isle-mushroom)" },
                   ].map((isle) => (
                     <div
                       key={`island-badge-${isle.name}`}
@@ -241,7 +236,7 @@ const Hero: React.FC = () => {
                       <div className="text-xs uppercase text-white/50">
                         Today
                       </div>
-                      <div className="text-sm font-medium">May 2025</div>
+                      <div className="text-sm font-medium">Aug 2025</div>
                       <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-px h-4 bg-[var(--isle-ice)]"></div>
                     </div>
                     <div className="text-center">
@@ -262,14 +257,14 @@ const Hero: React.FC = () => {
               </div>
             </div>
           </div>
-          {/* Game stats - Updated to reflect 5 elemental isles */}{" "}
+          {/* Game stats - Updated to reflect 4 elemental isles */}{" "}
           <div className="flex justify-around mt-8">
             <div className="text-center">
-              <p className="text-3xl font-bold gradient-text">5</p>
+              <p className="text-3xl font-bold gradient-text">4</p>
               <p className="text-sm">Epic Realms</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold gradient-text">5</p>
+              <p className="text-3xl font-bold gradient-text">4</p>
               <p className="text-sm">Rival Teams</p>
             </div>
             <div className="text-center">

@@ -2,14 +2,13 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { getVersionInfo, formatVersion } from "../lib/version";
+import { getVersionInfo, formatVersion } from "@/lib/version";
 
 const EMOJIS = [
-  { emoji: "🌋", label: "Volcano", bgColor: "#ff5a36", particle: "🔥" },
-  { emoji: "❄️", label: "Ice", bgColor: "#64b5f6", particle: "❄️" },
-  { emoji: "🏜️", label: "Desert", bgColor: "#ffa726", particle: "☀️" },
-  { emoji: "🍄", label: "Mushroom", bgColor: "#8bc34a", particle: "🍄" },
-  { emoji: "💎", label: "Crystal", bgColor: "#5affc6", particle: "✨" },
+  { emoji: "🌋", label: "Pyrothar", bgColor: "#ff5a36", particle: "🔥" },
+  { emoji: "❄️", label: "Frostreign", bgColor: "#64b5f6", particle: "❄️" },
+  { emoji: "🏜️", label: "Sahrakir", bgColor: "#ffa726", particle: "☀️" },
+  { emoji: "🍄", label: "Auralis", bgColor: "#8bc34a", particle: "🍄" },
   { emoji: "🔥", label: "Fire", bgColor: "#ff5722", particle: "🔥" },
   { emoji: "🌪️", label: "Disaster", bgColor: "#9e9e9e", particle: "💨" },
   { emoji: "🌊", label: "Flood", bgColor: "#2196f3", particle: "💧" },

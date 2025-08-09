@@ -172,7 +172,7 @@ const Features: React.FC = () => {
     {
       title: "Elemental Arenas",
       description:
-        "Volcano, Ice, Desert, Mushroom, and Crystal—each island changes how you play.",
+        "Pyrothar, Frostreign, Sahrakir, and Auralis—each island changes how you play.",
       icon: "🏝️",
       color: "var(--isle-fire)",
       delay: 0,
@@ -180,7 +180,7 @@ const Features: React.FC = () => {
     },
     {
       title: "Team Showdown",
-      description: "Five teams battle for survival, strategy, and style.",
+      description: "Four teams battle for survival, strategy, and style.",
       icon: "🤝",
       color: "var(--isle-ice)",
       delay: 1,
