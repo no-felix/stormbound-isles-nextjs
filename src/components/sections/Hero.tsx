@@ -219,7 +219,7 @@ const Hero: React.FC = () => {
                   <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden mb-6">
                     <div
                       className="h-full bg-gradient-to-r from-[var(--isle-fire)] via-[var(--isle-ice)] to-[var(--isle-crystal)]"
-                      style={{ width: "8%" }}
+                      style={{ width: "35%" }} // Adjusted to reflect progress as of Aug 2025 toward Dec 2025
                     >
                       <div className="h-full w-full bg-white/10 animate-pulse-slow"></div>
                     </div>
@@ -243,7 +243,7 @@ const Hero: React.FC = () => {
                       <div className="text-xs uppercase text-white/50">
                         Release
                       </div>
-                      <div className="text-sm font-medium">Aug 2026</div>
+                      <div className="text-sm font-medium">Dec 2025</div>
                     </div>
                   </div>
                 </div>
