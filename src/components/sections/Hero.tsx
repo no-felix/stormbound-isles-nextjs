@@ -116,8 +116,7 @@ const Hero: React.FC = () => {
             Stormbound Isles
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-lg">
-            Four teams. Four elemental islands. Build, survive, and outsmart
-            chaos in the ultimate Minecraft showdown.
+            Four teams. Four elemental islands with unique buffs. Build, survive disasters, and control Totems to dominate the archipelago.
           </p>
           <div className="space-y-4 md:space-y-0 md:space-x-4 flex flex-col md:flex-row">
             {" "}
@@ -169,24 +168,36 @@ const Hero: React.FC = () => {
               {/* Main Content with Creative Layout */}
               <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
                 {/* The "Coming Soon" title with animated typing effect */}{" "}
-                <div className="mb-10">
-                  <div className="text-3xl md:text-4xl font-bold relative inline-flex items-center">
+                <div className="mb-10 text-center">
+                  <div className="text-3xl md:text-4xl font-bold mb-2">
                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-[var(--isle-ice)] to-[var(--isle-crystal)]">
-                      Coming Soon
-                    </span>{" "}
-                    <div className="ml-2 inline-flex items-center">
-                      <span className="text-white/70 text-xl">
-                        {typingText}
-                      </span>
-                      <span
-                        className="h-6 w-1.5 ml-0.5 bg-[var(--isle-crystal)] inline-block animate-blink"
-                        style={{ boxShadow: "0 0 8px var(--isle-crystal)" }}
-                      ></span>
+                      Launches Tomorrow
+                    </span>
+                  </div>
+                  <div className="flex justify-center items-center">
+                    <span className="text-white/70 text-xl">
+                      {typingText}
+                    </span>
+                    <span
+                      className="h-6 w-1.5 ml-0.5 bg-[var(--isle-crystal)] inline-block animate-blink"
+                      style={{ boxShadow: "0 0 8px var(--isle-crystal)" }}
+                    ></span>
+                  </div>
+                  {/* Launch Date & Time */}
+                  <div className="mt-6">
+                    <div className="text-lg font-semibold text-white/90 mb-1">
+                      August 25, 2025
+                    </div>
+                    <div className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[var(--isle-fire)] to-[var(--isle-ice)]">
+                      19:00 UTC+2
+                    </div>
+                    <div className="text-sm text-white/60 mt-1">
+                      The islands await your arrival
                     </div>
                   </div>
                 </div>
                 {/* Island Badges - Simple representation of the 5 isles */}
-                <div className="flex flex-wrap justify-center gap-4 mb-10">
+                <div className="flex flex-wrap justify-center gap-4 mb-6">
                   {[
                     { name: "Pyrothar", color: "var(--isle-fire)" },
                     { name: "Frostreign", color: "var(--isle-ice)" },
@@ -212,48 +223,15 @@ const Hero: React.FC = () => {
                     </div>
                   ))}
                 </div>
-                {/* Progress Section */}
-                <div className="w-full max-w-xs">
-                  {" "}
-                  {/* Progress bar showing completion status */}
-                  <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden mb-6">
-                    <div
-                      className="h-full bg-gradient-to-r from-[var(--isle-fire)] via-[var(--isle-ice)] to-[var(--isle-crystal)]"
-                      style={{ width: "35%" }} // Adjusted to reflect progress as of Aug 2025 toward Dec 2025
-                    >
-                      <div className="h-full w-full bg-white/10 animate-pulse-slow"></div>
-                    </div>
-                  </div>
-                  {/* Development timeline */}{" "}
-                  <div className="flex items-center justify-between">
-                    <div className="text-center">
-                      <div className="text-xs uppercase text-white/50">
-                        Started
-                      </div>
-                      <div className="text-sm font-medium">Apr 2025</div>
-                    </div>
-                    <div className="text-center relative">
-                      <div className="text-xs uppercase text-white/50">
-                        Today
-                      </div>
-                      <div className="text-sm font-medium">Aug 2025</div>
-                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-px h-4 bg-[var(--isle-ice)]"></div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-xs uppercase text-white/50">
-                        Release
-                      </div>
-                      <div className="text-sm font-medium">Dec 2025</div>
-                    </div>
-                  </div>
+                {/* Call to action link - ready for launch */}
+                <div className="flex justify-center mt-6">
+                  <Link
+                    href="/download"
+                    className="px-8 py-4 bg-gradient-to-r from-[var(--isle-fire)] to-[var(--isle-ice)] text-black font-bold rounded-full text-lg shadow-lg hover:shadow-xl hover:shadow-[var(--isle-fire)]/40 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--isle-ice)]/50 hover:scale-105"
+                  >
+                    Get Ready for Launch Tomorrow
+                  </Link>
                 </div>
-                {/* Call to action link - signup for updates */}
-                <Link
-                  href="/signup"
-                  className="mt-10 px-6 py-2 bg-transparent border border-white/20 rounded-full text-sm hover:border-[var(--isle-ice)] hover:text-[var(--isle-ice)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--isle-ice)]/50"
-                >
-                  Sign up for launch notification
-                </Link>
               </div>
             </div>
           </div>

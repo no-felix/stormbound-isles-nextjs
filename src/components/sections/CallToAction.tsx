@@ -33,9 +33,7 @@ const CallToAction: React.FC = () => {
                 Join the Adventure Today
               </h2>
               <p className="text-xl text-gray-300 max-w-2xl">
-                Begin your journey across the mystical Stormbound Isles. Forge
-                your destiny, discover ancient powers, and become a legend in
-                this magical realm.
+                Master elemental buffs, survive catastrophic disasters, and control the Totems. Only the most tactical teams will claim victory in this strategic battlefield.
               </p>
             </div>
 
