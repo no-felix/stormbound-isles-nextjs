@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import Layout from "@/components/layout/Layout";
 import FloatingParticles from "@/components/FloatingParticles";
@@ -86,10 +87,12 @@ export default function DownloadPlaceholder(): React.ReactElement {
 
             {/* GitHub profile promotion card */}
             <div className="mt-8 max-w-md mx-auto bg-slate-800/40 border border-slate-700 rounded-xl p-4 flex items-center gap-4">
-              <img
+              <Image
                 src={GITHUB_PROFILE.avatar_url}
                 alt={`${GITHUB_PROFILE.name} avatar`}
-                className="w-16 h-16 rounded-full object-cover border-2 border-[var(--isle-crystal)]"
+                width={64}
+                height={64}
+                className="rounded-full object-cover border-2 border-[var(--isle-crystal)]"
               />
               <div className="text-left">
                 <a
@@ -112,7 +115,7 @@ export default function DownloadPlaceholder(): React.ReactElement {
 
             <div className="mt-10 text-sm text-gray-500">
               Tip: This page will host the mod JAR and a small installer. If you
-              run a server, you'll find a lightweight setup guide here when
+              run a server, you will find a lightweight setup guide here when
               available.
             </div>
           </div>

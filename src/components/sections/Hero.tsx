@@ -205,8 +205,8 @@ const Hero: React.FC = () => {
                     September 8, 2025 • 19:00 UTC+2
                   </div>
                   <div className="text-sm text-white/60 mt-2 max-w-xl mx-auto">
-                    We've had an unexpected delay — thank you for your patience.
-                    We'll be ready to welcome you on the islands soon.
+                    We&#39;ve had an unexpected delay — thank you for your patience.
+                    We&#39;ll be ready to welcome you on the islands soon.
                   </div>
                 </div>
 
