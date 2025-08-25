@@ -161,7 +161,7 @@ const Hero: React.FC = () => {
             isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
           }`}
         >
-          <div className="relative w-full min-h-[260px] md:min-h-[360px] glass rounded-3xl overflow-hidden">
+          <div className="relative w-full min-h-[260px] md:min-h-[360px] glass rounded-3xl overflow-hidden flex items-center">
             {/* Background layers (absolute) - keep decorative elements here */}
             <div
               className="absolute inset-0 bg-gradient-to-br from-[var(--background)]/80 to-[var(--background)]/60 backdrop-filter backdrop-blur-sm"
@@ -172,10 +172,10 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Main Content (relative) - allows the card to grow with content */}
-            <div className="relative flex flex-col items-center justify-center p-8">
+            <div className="relative flex flex-col items-center justify-center p-12 md:p-16 gap-8 w-full h-full">
               {/* The "Coming Soon" title with animated typing effect */}{" "}
-              <div className="mb-8 text-center">
-                <div className="flex items-center justify-center gap-3 mb-3">
+              <div className="text-center w-full">
+                <div className="flex items-center justify-center gap-3 mb-6">
                   <div className="text-3xl md:text-4xl font-bold">
                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-[var(--isle-ice)] to-[var(--isle-crystal)]">
                       Launch Update
@@ -187,7 +187,7 @@ const Hero: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="flex justify-center items-center">
+                <div className="flex justify-center items-center mb-4">
                   <span className="text-white/70 text-base mr-3">
                     Previously:{" "}
                     <span className="line-through text-white/40">
@@ -197,57 +197,25 @@ const Hero: React.FC = () => {
                 </div>
 
                 {/* New Launch Date & Time */}
-                <div className="mt-4">
-                  <div className="text-lg font-semibold text-white/90 mb-1">
+                <div className="mt-2 mb-6">
+                  <div className="text-lg font-semibold text-white/90 mb-2">
                     New Launch Date
                   </div>
-                  <div className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[var(--isle-fire)] to-[var(--isle-ice)]">
+                  <div className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[var(--isle-fire)] to-[var(--isle-ice)] mb-2">
                     September 8, 2025 • 19:00 UTC+2
                   </div>
                   <div className="text-sm text-white/60 mt-2 max-w-xl mx-auto">
                     We've had an unexpected delay — thank you for your patience.
                     We'll be ready to welcome you on the islands soon.
                   </div>
-
-                  {/* Live countdown to the new launch */}
-                  <Countdown targetIso={"2025-09-08T17:00:00Z"} />
                 </div>
-              </div>
-              {/* Island Badges - Simple representation of the 4 isles */}
-              <div className="flex flex-wrap justify-center gap-4 mb-6">
-                {[
-                  { name: "Pyrothar", color: "var(--isle-fire)" },
-                  { name: "Frostreign", color: "var(--isle-ice)" },
-                  { name: "Sahrakir", color: "var(--isle-desert)" },
-                  { name: "Auralis", color: "var(--isle-mushroom)" },
-                ].map((isle) => (
-                  <div
-                    key={`island-badge-${isle.name}`}
-                    className="px-3 py-1 rounded-full flex items-center border"
-                    style={{
-                      borderColor: `${isle.color}33`,
-                      background: `${isle.color}15`,
-                    }}
-                  >
-                    <div
-                      className="w-2 h-2 rounded-full mr-2"
-                      style={{
-                        backgroundColor: isle.color,
-                        boxShadow: `0 0 8px ${isle.color}`,
-                      }}
-                    ></div>
-                    <span className="text-xs font-medium">{isle.name}</span>
+
+                {/* Live countdown to the new launch */}
+                <div className="flex justify-center">
+                  <div className="inline-block rounded-2xl border-4 border-[var(--isle-ice)] bg-[var(--background)]/80 shadow-lg shadow-[var(--isle-ice)]/20 px-6 py-4">
+                    <Countdown targetIso={"2025-09-08T17:00:00Z"} />
                   </div>
-                ))}
-              </div>
-              {/* Call to action link - ready for launch */}
-              <div className="flex justify-center mt-6">
-                <Link
-                  href="/download"
-                  className="px-8 py-4 bg-gradient-to-r from-[var(--isle-fire)] to-[var(--isle-ice)] text-black font-bold rounded-full text-lg shadow-lg hover:shadow-xl hover:shadow-[var(--isle-fire)]/40 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--isle-ice)]/50 hover:scale-105"
-                >
-                  Mark Your Calendar — New Launch Date
-                </Link>
+                </div>
               </div>
             </div>
           </div>

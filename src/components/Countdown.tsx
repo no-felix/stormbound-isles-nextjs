@@ -24,7 +24,7 @@ const Countdown: React.FC<CountdownProps> = ({ targetIso }) => {
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
 
   return (
-    <div className="mt-4 flex items-center justify-center gap-3 text-sm text-white/90">
+    <div className="flex items-center justify-center gap-3 text-sm text-white/90">
       <div className="flex flex-col items-center">
         <span className="text-xl font-bold">{pad(days)}</span>
         <span className="uppercase text-xs text-white/60">days</span>
