@@ -168,31 +168,35 @@ const Hero: React.FC = () => {
               {/* Main Content with Creative Layout */}
               <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
                 {/* The "Coming Soon" title with animated typing effect */}{" "}
-                <div className="mb-10 text-center">
-                  <div className="text-3xl md:text-4xl font-bold mb-2">
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-[var(--isle-ice)] to-[var(--isle-crystal)]">
-                      Launches Tomorrow
-                    </span>
+                <div className="mb-8 text-center">
+                  <div className="flex items-center justify-center gap-3 mb-3">
+                    <div className="text-3xl md:text-4xl font-bold">
+                      <span className="bg-clip-text text-transparent bg-gradient-to-r from-[var(--isle-ice)] to-[var(--isle-crystal)]">
+                        Launch Update
+                      </span>
+                    </div>
+                    {/* Delayed badge */}
+                    <div className="px-3 py-1 rounded-full bg-red-600 text-white text-xs font-semibold shadow-sm">
+                      Delayed
+                    </div>
                   </div>
+
                   <div className="flex justify-center items-center">
-                    <span className="text-white/70 text-xl">
-                      {typingText}
+                    <span className="text-white/70 text-base mr-3">
+                      Previously: <span className="line-through text-white/40">Aug 25, 2025 • 19:00 UTC+2</span>
                     </span>
-                    <span
-                      className="h-6 w-1.5 ml-0.5 bg-[var(--isle-crystal)] inline-block animate-blink"
-                      style={{ boxShadow: "0 0 8px var(--isle-crystal)" }}
-                    ></span>
                   </div>
-                  {/* Launch Date & Time */}
-                  <div className="mt-6">
+
+                  {/* New Launch Date & Time */}
+                  <div className="mt-4">
                     <div className="text-lg font-semibold text-white/90 mb-1">
-                      August 25, 2025
+                      New Launch Date
                     </div>
                     <div className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[var(--isle-fire)] to-[var(--isle-ice)]">
-                      19:00 UTC+2
+                      September 8, 2025 • 19:00 UTC+2
                     </div>
-                    <div className="text-sm text-white/60 mt-1">
-                      The islands await your arrival
+                    <div className="text-sm text-white/60 mt-2 max-w-xl mx-auto">
+                      We've had an unexpected delay — thank you for your patience. We'll be ready to welcome you on the islands soon.
                     </div>
                   </div>
                 </div>
@@ -229,7 +233,7 @@ const Hero: React.FC = () => {
                     href="/download"
                     className="px-8 py-4 bg-gradient-to-r from-[var(--isle-fire)] to-[var(--isle-ice)] text-black font-bold rounded-full text-lg shadow-lg hover:shadow-xl hover:shadow-[var(--isle-fire)]/40 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--isle-ice)]/50 hover:scale-105"
                   >
-                    Get Ready for Launch Tomorrow
+                    Mark Your Calendar — New Launch Date
                   </Link>
                 </div>
               </div>
