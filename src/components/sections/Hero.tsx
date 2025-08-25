@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import FloatingParticles from "@/components/FloatingParticles";
+import Countdown from "@/components/Countdown";
 
 const Hero: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -116,7 +117,8 @@ const Hero: React.FC = () => {
             Stormbound Isles
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-lg">
-            Four teams. Four elemental islands with unique buffs. Build, survive disasters, and control Totems to dominate the archipelago.
+            Four teams. Four elemental islands with unique buffs. Build, survive
+            disasters, and control Totems to dominate the archipelago.
           </p>
           <div className="space-y-4 md:space-y-0 md:space-x-4 flex flex-col md:flex-row">
             {" "}
@@ -159,100 +161,113 @@ const Hero: React.FC = () => {
             isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
           }`}
         >
-          <div className="relative w-full h-[450px] glass rounded-3xl overflow-hidden">
-            {/* Animated "Coming Soon" display with interactive elements */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[var(--background)]/80 to-[var(--background)]/60 backdrop-filter backdrop-blur-sm">
+          <div className="relative w-full min-h-[260px] md:min-h-[360px] glass rounded-3xl overflow-hidden">
+            {/* Background layers (absolute) - keep decorative elements here */}
+            <div
+              className="absolute inset-0 bg-gradient-to-br from-[var(--background)]/80 to-[var(--background)]/60 backdrop-filter backdrop-blur-sm"
+              aria-hidden
+            >
               {/* Hexagonal Grid Background */}
               {hexagonalGrid}
+            </div>
 
-              {/* Main Content with Creative Layout */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
-                {/* The "Coming Soon" title with animated typing effect */}{" "}
-                <div className="mb-8 text-center">
-                  <div className="flex items-center justify-center gap-3 mb-3">
-                    <div className="text-3xl md:text-4xl font-bold">
-                      <span className="bg-clip-text text-transparent bg-gradient-to-r from-[var(--isle-ice)] to-[var(--isle-crystal)]">
-                        Launch Update
-                      </span>
-                    </div>
-                    {/* Delayed badge */}
-                    <div className="px-3 py-1 rounded-full bg-red-600 text-white text-xs font-semibold shadow-sm">
-                      Delayed
-                    </div>
-                  </div>
-
-                  <div className="flex justify-center items-center">
-                    <span className="text-white/70 text-base mr-3">
-                      Previously: <span className="line-through text-white/40">Aug 25, 2025 • 19:00 UTC+2</span>
+            {/* Main Content (relative) - allows the card to grow with content */}
+            <div className="relative flex flex-col items-center justify-center p-8">
+              {/* The "Coming Soon" title with animated typing effect */}{" "}
+              <div className="mb-8 text-center">
+                <div className="flex items-center justify-center gap-3 mb-3">
+                  <div className="text-3xl md:text-4xl font-bold">
+                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-[var(--isle-ice)] to-[var(--isle-crystal)]">
+                      Launch Update
                     </span>
                   </div>
-
-                  {/* New Launch Date & Time */}
-                  <div className="mt-4">
-                    <div className="text-lg font-semibold text-white/90 mb-1">
-                      New Launch Date
-                    </div>
-                    <div className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[var(--isle-fire)] to-[var(--isle-ice)]">
-                      September 8, 2025 • 19:00 UTC+2
-                    </div>
-                    <div className="text-sm text-white/60 mt-2 max-w-xl mx-auto">
-                      We've had an unexpected delay — thank you for your patience. We'll be ready to welcome you on the islands soon.
-                    </div>
+                  {/* Delayed badge */}
+                  <div className="px-3 py-1 rounded-full bg-red-600 text-white text-xs font-semibold shadow-sm">
+                    Delayed
                   </div>
                 </div>
-                {/* Island Badges - Simple representation of the 5 isles */}
-                <div className="flex flex-wrap justify-center gap-4 mb-6">
-                  {[
-                    { name: "Pyrothar", color: "var(--isle-fire)" },
-                    { name: "Frostreign", color: "var(--isle-ice)" },
-                    { name: "Sahrakir", color: "var(--isle-desert)" },
-                    { name: "Auralis", color: "var(--isle-mushroom)" },
-                  ].map((isle) => (
-                    <div
-                      key={`island-badge-${isle.name}`}
-                      className="px-3 py-1 rounded-full flex items-center border"
-                      style={{
-                        borderColor: `${isle.color}33`,
-                        background: `${isle.color}15`,
-                      }}
-                    >
-                      <div
-                        className="w-2 h-2 rounded-full mr-2"
-                        style={{
-                          backgroundColor: isle.color,
-                          boxShadow: `0 0 8px ${isle.color}`,
-                        }}
-                      ></div>
-                      <span className="text-xs font-medium">{isle.name}</span>
-                    </div>
-                  ))}
+
+                <div className="flex justify-center items-center">
+                  <span className="text-white/70 text-base mr-3">
+                    Previously:{" "}
+                    <span className="line-through text-white/40">
+                      Aug 25, 2025 • 19:00 UTC+2
+                    </span>
+                  </span>
                 </div>
-                {/* Call to action link - ready for launch */}
-                <div className="flex justify-center mt-6">
-                  <Link
-                    href="/download"
-                    className="px-8 py-4 bg-gradient-to-r from-[var(--isle-fire)] to-[var(--isle-ice)] text-black font-bold rounded-full text-lg shadow-lg hover:shadow-xl hover:shadow-[var(--isle-fire)]/40 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--isle-ice)]/50 hover:scale-105"
+
+                {/* New Launch Date & Time */}
+                <div className="mt-4">
+                  <div className="text-lg font-semibold text-white/90 mb-1">
+                    New Launch Date
+                  </div>
+                  <div className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[var(--isle-fire)] to-[var(--isle-ice)]">
+                    September 8, 2025 • 19:00 UTC+2
+                  </div>
+                  <div className="text-sm text-white/60 mt-2 max-w-xl mx-auto">
+                    We've had an unexpected delay — thank you for your patience.
+                    We'll be ready to welcome you on the islands soon.
+                  </div>
+
+                  {/* Live countdown to the new launch */}
+                  <Countdown targetIso={"2025-09-08T17:00:00Z"} />
+                </div>
+              </div>
+              {/* Island Badges - Simple representation of the 4 isles */}
+              <div className="flex flex-wrap justify-center gap-4 mb-6">
+                {[
+                  { name: "Pyrothar", color: "var(--isle-fire)" },
+                  { name: "Frostreign", color: "var(--isle-ice)" },
+                  { name: "Sahrakir", color: "var(--isle-desert)" },
+                  { name: "Auralis", color: "var(--isle-mushroom)" },
+                ].map((isle) => (
+                  <div
+                    key={`island-badge-${isle.name}`}
+                    className="px-3 py-1 rounded-full flex items-center border"
+                    style={{
+                      borderColor: `${isle.color}33`,
+                      background: `${isle.color}15`,
+                    }}
                   >
-                    Mark Your Calendar — New Launch Date
-                  </Link>
-                </div>
+                    <div
+                      className="w-2 h-2 rounded-full mr-2"
+                      style={{
+                        backgroundColor: isle.color,
+                        boxShadow: `0 0 8px ${isle.color}`,
+                      }}
+                    ></div>
+                    <span className="text-xs font-medium">{isle.name}</span>
+                  </div>
+                ))}
+              </div>
+              {/* Call to action link - ready for launch */}
+              <div className="flex justify-center mt-6">
+                <Link
+                  href="/download"
+                  className="px-8 py-4 bg-gradient-to-r from-[var(--isle-fire)] to-[var(--isle-ice)] text-black font-bold rounded-full text-lg shadow-lg hover:shadow-xl hover:shadow-[var(--isle-fire)]/40 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--isle-ice)]/50 hover:scale-105"
+                >
+                  Mark Your Calendar — New Launch Date
+                </Link>
               </div>
             </div>
           </div>
-          {/* Game stats - Updated to reflect 4 elemental isles */}{" "}
-          <div className="flex justify-around mt-8">
-            <div className="text-center">
-              <p className="text-3xl font-bold gradient-text">4</p>
-              <p className="text-sm">Epic Realms</p>
-            </div>
-            <div className="text-center">
-              <p className="text-3xl font-bold gradient-text">4</p>
-              <p className="text-sm">Rival Teams</p>
-            </div>
-            <div className="text-center">
-              <p className="text-3xl font-bold gradient-text">∞</p>
-              <p className="text-sm">Possibilities</p>
-            </div>
+        </div>
+      </div>
+
+      {/* Game stats - full width, sits below the hero columns */}
+      <div className="container mx-auto px-4 mt-8">
+        <div className="flex flex-col md:flex-row justify-around items-center gap-6 max-w-4xl mx-auto">
+          <div className="text-center">
+            <p className="text-3xl font-bold gradient-text">4</p>
+            <p className="text-sm">Epic Realms</p>
+          </div>
+          <div className="text-center">
+            <p className="text-3xl font-bold gradient-text">4</p>
+            <p className="text-sm">Rival Teams</p>
+          </div>
+          <div className="text-center">
+            <p className="text-3xl font-bold gradient-text">∞</p>
+            <p className="text-sm">Possibilities</p>
           </div>
         </div>
       </div>
