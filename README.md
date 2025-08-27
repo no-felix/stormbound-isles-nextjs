@@ -4,7 +4,7 @@
 
 **A Next.js-powered showcase for a Minecraft mod**
 
-[![Next.js](https://img.shields.io/badge/Next.js-15.4.6-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-15.5.0-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?style=for-the-badge&logo=typescript)](https://typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.x-06B6D4?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 [![React](https://img.shields.io/badge/React-19.1.0-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
@@ -25,7 +25,7 @@ It serves both as a **personal learning project** and a **promotional site** for
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** Next.js 15.4.6, React 19.1.0, TypeScript 5.x, Tailwind CSS 4.x
+- **Frontend:** Next.js 15.5.0, React 19.1.0, TypeScript 5.x, Tailwind CSS 4.x
 - **Animations:** Framer Motion, CSS transitions, custom WebGL shaders (OGL)
 - **Tooling:** ESLint, PostCSS, GitHub Actions CI/CD
 - **Architecture:** Component-based design, absolute imports, strict TypeScript, responsive & accessible
