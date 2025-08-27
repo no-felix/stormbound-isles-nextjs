@@ -1,4 +1,4 @@
-export const VERSION = "1.1.4";
+export const VERSION = "1.1.5";
 // Get version info from package.json
 import packageJson from "../../package.json";
 

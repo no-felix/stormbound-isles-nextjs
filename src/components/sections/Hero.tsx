@@ -191,7 +191,7 @@ const Hero: React.FC = () => {
                   <span className="text-white/70 text-base mr-3">
                     Previously:{" "}
                     <span className="line-through text-white/40">
-                      Aug 25, 2025 • 19:00 UTC+2
+                      Aug 25, 2025 • 18:45 UTC+2
                     </span>
                   </span>
                 </div>
@@ -202,7 +202,7 @@ const Hero: React.FC = () => {
                     New Launch Date
                   </div>
                   <div className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[var(--isle-fire)] to-[var(--isle-ice)] mb-2">
-                    September 8, 2025 • 19:00 UTC+2
+                    September 8, 2025 • 18:45 UTC+2
                   </div>
                   <div className="text-sm text-white/60 mt-2 max-w-xl mx-auto">
                     We&#39;ve had an unexpected delay — thank you for your patience.
@@ -213,7 +213,7 @@ const Hero: React.FC = () => {
                 {/* Live countdown to the new launch */}
                 <div className="flex justify-center">
                   <div className="inline-block rounded-2xl border-4 border-[var(--isle-ice)] bg-[var(--background)]/80 shadow-lg shadow-[var(--isle-ice)]/20 px-6 py-4">
-                    <Countdown targetIso={"2025-09-08T17:00:00Z"} />
+                    <Countdown targetIso={"2025-09-08T16:45:00Z"} />
                   </div>
                 </div>
               </div>
