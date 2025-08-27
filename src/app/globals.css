@@ -3,10 +3,10 @@
 :root {
   --background: #181c2b;
   --foreground: #ededed;
-  --isle-fire: #ff5a36;
-  --isle-ice: #5ad1ff;
-  --isle-desert: #ffe156;
-  --isle-mushroom: #b36cff;
+  --isle-fire: #FF5555; /* Pyrothar: Red */
+  --isle-ice: #55FFFF; /* Frostreign: Aqua */
+  --isle-desert: #FFFF55; /* Sahrakir: Yellow */
+  --isle-mushroom: #FF55FF; /* Auralis: Light Purple */
   --isle-crystal: #5affc6;
   --glass-bg: rgba(24, 28, 43, 0.7);
   --glass-border: rgba(255, 255, 255, 0.14);

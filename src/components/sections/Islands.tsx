@@ -22,7 +22,7 @@ const Islands: React.FC = () => {
       name: "Pyrothar",
       description:
         "A volcanic isle where players gain Fire Resistance while standing on their team's territory. Beware of meteors and fire showers that may strike during disasters.",
-      color: "var(--isle-fire)",
+  color: "var(--isle-fire)", // #FF5555
       emoji: "🌋",
       features: [
         "Fire Resistance Buff",
@@ -36,7 +36,7 @@ const Islands: React.FC = () => {
       name: "Frostreign",
       description:
         "An icy isle where players receive Resistance while standing on their team's territory. Blizzards and ice spikes threaten those who venture into this frozen realm.",
-      color: "var(--isle-ice)",
+  color: "var(--isle-ice)", // #55FFFF
       emoji: "❄️",
       features: [
         "Resistance Buff",
@@ -50,7 +50,7 @@ const Islands: React.FC = () => {
       name: "Sahrakir",
       description:
         "A sun-scorched desert isle where players gain Speed while standing on their team's territory. Sandstorms and mirages create chaos across the dunes.",
-      color: "var(--isle-desert)",
+  color: "var(--isle-desert)", // #FFFF55
       emoji: "🏜️",
       features: [
         "Speed Buff",
@@ -64,7 +64,7 @@ const Islands: React.FC = () => {
       name: "Auralis",
       description:
         "A mystical isle where players receive Regeneration while standing on their team's territory. Spore clouds and crystal storms sweep across this otherworldly landscape.",
-      color: "var(--isle-mushroom)",
+  color: "var(--isle-mushroom)", // #FF55FF
       emoji: "🍄",
       features: [
         "Regeneration Buff",
